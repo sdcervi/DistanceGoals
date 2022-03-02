@@ -1,0 +1,31 @@
+/* ---------------------------------- GLOBAL STYLES ---------------------------------- */
+body { padding-top: 4.5rem; }
+.goals-container { margin-top: 1.5em; }
+
+/* ---------------------------------- NAVBAR STYLES ---------------------------------- */
+nav img.logo { max-height: 1.5em; }
+nav h1 { margin: 0; font-size: 1rem; }
+
+/* -------------------------------- COMPONENT STYLES --------------------------------- */
+.race-name h3 { font-size: 1.25em; margin-bottom: 0; }
+h4.race-company {font-size: 1.15em; margin-bottom: 0; }
+p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-size: 0.85em; color: slategray; }
+.race-progress { margin: 0.75em 0; }
+.race-progress .progress, .milestone-progress .progress { margin: 0; }
+.progress-header { text-align: right; }
+.progress-header, .progress-display { align-self: center; }
+.race-details p { margin-bottom: 0; }
+.milestone-progress .progress-header { font-size: 0.85em; }
+
+.milestone-1 { background-color: darkgreen; opacity: 0.0833; }
+.milestone-2 { background-color: darkgreen; opacity: 0.1666; }
+.milestone-3 { background-color: darkgreen; opacity: 0.25; }
+.milestone-4 { background-color: darkgreen; opacity: 0.3333; }
+.milestone-5 { background-color: darkgreen; opacity: 0.4166; }
+.milestone-6 { background-color: darkgreen; opacity: 0.50; }
+.milestone-7 { background-color: darkgreen; opacity: 0.5833; }
+.milestone-8 { background-color: darkgreen; opacity: 0.6666; }
+.milestone-9 { background-color: darkgreen; opacity: 0.75; }
+.milestone-10 { background-color: darkgreen; opacity: 0.8333; }
+.milestone-11 { background-color: darkgreen; opacity: 0.9166; }
+.milestone-12 { background-color: darkgreen; opacity: 1; }
