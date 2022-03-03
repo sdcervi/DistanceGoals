@@ -86,7 +86,7 @@ function writeCard () {
 			inProgress.innerHTML += cardContent;
 		} else {
 			const endDate = new Date (challenge.complete);		
-			let cardContent = '<article class="grid-item"><div class="card race-card">';
+			let cardContent = '<article class="col"><div class="card race-card">';
 			cardContent += '<div class="card-header race-name"><h3>' + challenge.name + '</h3></div>';
 			cardContent += '<div class="card-body">';
 			cardContent += '<p class="race-period">Finished: ' + endDate.toDateString() + '</p>';
