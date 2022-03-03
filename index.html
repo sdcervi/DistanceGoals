@@ -39,12 +39,55 @@
 	
 	<section class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 goals-container" id="complete"></section>
 	
+	<!-- Edit progress modal -->
+	<div class="modal fade" id="editProgressModal" tabindex="-1" aria-labelledby="editProgressModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="editProgressModalLabel">Enter new progress amount:</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form>
+						<div class="mb-3 row">
+							<label for="challenge-name" class="col-2 col-form-label">Challenge:</label>
+							<div class="col-10"><input type="text" class="form-control col-10" name="challenge-name" id="challenge-name" readonly /></div>
+						</div>
+						<div class="mb-3 row">
+							<label for="enter-distance" class="col-2 col-form-label">Distance:</label>
+							<div class="col-10"><input type="text" class="form-control col-10" name="enter-distance" id="enter-distance" /></div>
+						</div>
+						<div class="row">
+							<label class="col-2 col-form-label">Unit:</label>
+							<div class="col-10">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="distance" value="miles" id="miles" checked>
+									<label class="form-check-label" for="miles">miles</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="distance" value="kilometers" id="kilometers">
+									<label class="form-check-label" for="kilometers">kilometers</label>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" id="edit-progress-button" onclick="editProgress()" data-bs-dismiss="modal">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </main>
 	
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
 <script type="text/javascript" src="js/sample-data.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
+<script type="text/javascript" src="js/edit-progress.js"></script>
 	
 </body>
 </html>

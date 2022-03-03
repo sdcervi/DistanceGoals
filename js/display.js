@@ -4,6 +4,9 @@ const complete = document.getElementById("complete");
 function writeCard () {
 	for (const counter in challenges) {
 		const challenge = challenges[counter];
+		if (challenge.progress >= challenge.distance && !challenge.complete) {
+			challenge.complete = new Date();
+		}
 		if (!challenge.complete) {
 			const today = new Date ();
 			const startDate = new Date (challenge.start);
@@ -12,8 +15,8 @@ function writeCard () {
 			let timeSoFar = today.getTime() - startDate.getTime();
 			timeSoFar = Math.floor(timeSoFar / (1000 * 3600 * 24));
 			let progress = Math.floor((challenge.progress / challenge.distance) * 100);
-			let cardContent = '<article class="col"><div class="card race-card">';
-			cardContent += '<div class="card-header race-name"><h3>' + challenge.name + '</h3></div>';
+			let cardContent = '<article class="col" id="' + counter +'"><div class="card race-card">';
+			cardContent += '<div class="card-header race-name"><button class="btn btn-sm btn-secondary progress-edit" data-bs-toggle="modal" data-bs-target="#editProgressModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" />&nbsp;Progress</button><h3>' + challenge.name + '</h3></div>';
 			cardContent += '<div class="card-body">';
 			if (challenge.period) {
 				cardContent += '<p class="race-period">Finishes: ' + endDate.toDateString() + '</p>';
@@ -82,7 +85,7 @@ function writeCard () {
 			cardContent += '</div></div></div></article>';
 			inProgress.innerHTML += cardContent;
 		} else {
-			const endDate = new Date (challenge.complete);			
+			const endDate = new Date (challenge.complete);		
 			let cardContent = '<article class="col"><div class="card race-card">';
 			cardContent += '<div class="card-header race-name"><h3>' + challenge.name + '</h3></div>';
 			cardContent += '<div class="card-body">';
