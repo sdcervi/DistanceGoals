@@ -15,7 +15,7 @@ function writeCard () {
 			let timeSoFar = today.getTime() - startDate.getTime();
 			timeSoFar = Math.floor(timeSoFar / (1000 * 3600 * 24));
 			let progress = Math.floor((challenge.progress / challenge.distance) * 100);
-			let cardContent = '<article class="grid-item" id="' + counter +'"><div class="card race-card">';
+			let cardContent = '<article class="col" id="' + counter +'"><div class="card race-card">';
 			cardContent += '<div class="card-header race-name"><button class="btn btn-sm btn-secondary progress-edit" data-bs-toggle="modal" data-bs-target="#editProgressModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" />&nbsp;Progress</button><h3>' + challenge.name + '</h3></div>';
 			cardContent += '<div class="card-body">';
 			if (challenge.period) {
@@ -59,6 +59,7 @@ function writeCard () {
 			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + challenge.progress + " " + challenge.unit + '</p>';
 			if (challenge.milestones) {
 				cardContent += '<p><strong>Milestones:</strong></p></div><div class="milestone-progress"><div class="table-responsive"><table class="table table-sm table-borderless milestone-table">';
+
 				let stepCounter = 0;
 				let previousStep = 0;
 				let currentStep = 0;
