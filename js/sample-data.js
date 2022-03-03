@@ -5,7 +5,7 @@ const challenges = {
 		distance:		600,
 		unit:			"miles",
 		period:			365,
-		start:			"2-28-2022",
+		start:			"2022-02-28T00:00:00",
 		progress:		384.39,
 		complete:		false,	
 		milestones:	[
