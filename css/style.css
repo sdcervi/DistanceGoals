@@ -8,6 +8,8 @@ nav h1 { margin: 0; font-size: 1rem; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
 .col { margin-bottom: 1.5em; }
+.progress-bar { background-color: darkgreen; }
+.progress-bar.progress-time { background-color: darkblue; }
 
 .race-name h3 { font-size: 1.25em; margin-bottom: 0; }
 h4.race-company {font-size: 1.15em; margin-bottom: 0; }
@@ -17,5 +19,7 @@ p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-s
 .progress-header { text-align: right; }
 .progress-header, .progress-display { align-self: center; }
 .race-details p { margin-bottom: 0; }
-.milestone-progress .progress-header { font-size: 0.85em; }
-.milestone-progress .progress-bar { background-color: darkgreen; }
+.milestone-table tr { font-size: 0.85em; }
+.milestone-table td { vertical-align: bottom; }
+.milestone-table td:first-of-type { margin-right: 0.5em; }
+.milestone-progress .progress-display { width: 100%; }

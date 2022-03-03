@@ -28,7 +28,7 @@ const challenges = {
 		distance:		5,
 		unit:			"km",
 		period:			false,
-		start:			"3-1-2022",
+		start:			"2022-03-01T00:00:00",
 		progress:		2.53,
 		complete:		false
 	},
@@ -38,7 +38,7 @@ const challenges = {
 		distance:		5,
 		unit:			"km",
 		period:			false,
-		start:			"3-1-2022",
+		start:			"2022-03-01T00:00:00",
 		progress:		3.46,
 		complete:		false
 	},
@@ -48,7 +48,7 @@ const challenges = {
 		distance:		5,
 		unit:			"km",
 		period:			false,
-		start:			"3-1-2022",
+		start:			"2022-03-01T00:00:00",
 		progress:		4.70,
 		complete:		false
 	},
@@ -58,7 +58,7 @@ const challenges = {
 		distance:		400,
 		unit:			"miles",
 		period:			false,
-		start:			"2-3-2022",
+		start:			"2022-02-03T00:00:00",
 		progress:		101.81,
 		complete:		false,	
 		milestones:	[
@@ -70,5 +70,22 @@ const challenges = {
 			{	name:	"Saturn",	distance:	280		},
 			{	name:	"Uranus",	distance:	340		},
 			{	name:	"Neptune",	distance:	400		}]
+	},
+	dino_might: {
+		name:			"Dino-Might Challenge",
+		company:		"Virtual Running Club",
+		distance:		100,
+		unit:			"miles",
+		period:			false,
+		start:			"2022-02-03T00:00:00",
+		progress:		100,
+		complete:		"2022-02-28T00:00:00",
+		milestones:	[
+			{	name:	"Parasaurolophus",		distance:	10		},
+			{	name:	"Triceratops",			distance:	20		},
+			{	name:	"Brachiosaurus",		distance:	40		},
+			{	name:	"Stegosaurus",			distance:	60		},
+			{	name:	"Velociraptor",			distance:	80		},
+			{	name:	"Tyrannosaurus&nbsp;Rex",	distance:	99.9	}]
 	}
 };
