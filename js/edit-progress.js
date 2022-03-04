@@ -29,5 +29,6 @@ function editProgress () {
 	}
 	inProgress.innerHTML = "";
 	complete.innerHTML = "";
-	writeCard();	
+	writeCard();
+	saveChanges();
 }

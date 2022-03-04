@@ -27,80 +27,97 @@
 	
 <main class="container">
 	
-	<p>This is a sandbox page for testing new features.</p>
+	<div class="container" style="display: flex; justify-content: center;">
+		<button class="btn btn-primary btn-sm m-2" onClick="saveChanges()">Save changes</button>
+		<button class="btn btn-secondary btn-sm m-2" onClick="exportFile()">Export data</button>
+		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#uploadFileModal" >Import data</button>
+		<button class="btn btn-secondary btn-sm m-2" onClick="deleteData()">Delete my data</button>
+	</div>
 	
-	<form class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
-		<div class="mb-3">
-			<label for="storageTest1" class="form-label">Storage item 1</label>
-			<input type="text" class="form-control" id="storageTest1">
-		</div>
-		<div class="mb-3">
-			<label for="storageTest2" class="form-label">Storage item 2</label>
-			<input type="text" class="form-control" id="storageTest2">
-		</div>
-		<div class="mb-3">
-			<label for="storageTest3" class="form-label">Storage item 3</label>
-			<input type="text" class="form-control" id="storageTest3">
-		</div>
-		<button type="submit" class="btn btn-primary" onClick="testLocalStorage('storageTest1', 'storageTest2', 'storageTest3')">Save to local storage</button>
-	</form>
+	<!--div>
+		<textarea class="form-control" id="uploadedFileOutput"></textarea>
+	</div-->
 	
-	<button type="submit" class="btn btn-primary mr-3" onClick="objectTest()">Test object in-out</button>
-	<button type="submit" class="btn btn-primary mr-3" onClick="outputLocalStorage()">Output local storage</button>
-	<button type="submit" class="btn btn-primary mr-3" onClick="clearLocalStorage()">Clear local storage</button>
+	<h2>Challenges in progress</h2>
 	
-	<div id="storageTestOutput"></div>
+	<section class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 goals-container" id="in-progress">
+	
+		<noscript>It looks like you&rsquo;ve disabled JavaScript, or your browser doesn&rsquo;t support it. To see the content for this website, please enable JavaScript.</noscript>
+	
+	</section>
+	
+	<h2>Completed challenges</h2>
+	
+	<section class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 goals-container" id="complete"></section>
+	
+	<!-- Edit progress modal -->
+	<div class="modal fade" id="editProgressModal" tabindex="-1" aria-labelledby="editProgressModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="editProgressModalLabel">Enter new progress amount:</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form>
+						<div class="mb-3 row">
+							<label for="challenge-name" class="col-2 col-form-label">Challenge:</label>
+							<div class="col-10"><input type="text" class="form-control col-10" name="challenge-name" id="challenge-name" readonly /></div>
+						</div>
+						<div class="mb-3 row">
+							<label for="enter-distance" class="col-2 col-form-label">Distance:</label>
+							<div class="col-10"><input type="text" class="form-control col-10" name="enter-distance" id="enter-distance" /></div>
+						</div>
+						<div class="row">
+							<label class="col-2 col-form-label">Unit:</label>
+							<div class="col-10">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="distance" value="miles" id="miles" checked>
+									<label class="form-check-label" for="miles">miles</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="distance" value="kilometers" id="kilometers">
+									<label class="form-check-label" for="kilometers">kilometers</label>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" id="edit-progress-button" onclick="editProgress()" data-bs-dismiss="modal">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Upload file modal -->
+	<div class="modal fade" id="uploadFileModal" tabindex="-1" aria-labelledby="uploadFileModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Select a file</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<input class="form-control col" type="file" id="uploadFile" accept="text/plain" name="files[]">
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" id="edit-progress-button" data-bs-dismiss="modal">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 </main>
 	
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
-	
-<script>
-	const testObject = {
-		name:			"Space Race",
-		company:		"Virtual Running Club",
-		distance:		400,
-		unit:			"miles",
-		period:			false,
-		start:			"2022-02-03T00:00:00",
-		progress:		101.81,
-		complete:		false,	
-		milestones:	[
-			{	name:	"Mercury",	distance:	25		},
-			{	name:	"Venus",	distance:	70		},
-			{	name:	"Earth",	distance:	120		},
-			{	name:	"Mars",		distance:	170		},
-			{	name:	"Jupiter",	distance:	225		},
-			{	name:	"Saturn",	distance:	280		},
-			{	name:	"Uranus",	distance:	340		},
-			{	name:	"Neptune",	distance:	400		}]
-	};
-	function testLocalStorage (id1, id2, id3) {
-		const input1 = document.getElementById(id1).value;
-		const input2 = document.getElementById(id2).value;
-		const input3 = document.getElementById(id3).value;
-		const storageTest = {
-			test1:	input1,
-			test2:	input2,
-			test3:	input3
-		};
-		window.localStorage.setItem('distanceTest', JSON.stringify(storageTest));
-	}
-	function objectTest () {
-		window.localStorage.setItem('distanceTest', JSON.stringify(testObject));
-	}
-	function outputLocalStorage () {
-		const output = JSON.parse(window.localStorage.getItem('distanceTest'));
-		const outputDiv = document.getElementById('storageTestOutput');
-		outputDiv.innerHTML = JSON.stringify(output); // will need to parse number-strings back into numbers
-		console.log (output);
-	}
-	function clearLocalStorage () {
-		window.localStorage.removeItem('distanceTest');
-	}
-</script>
+<script type="text/javascript" src="js/data-handler.js"></script>
+<script type="text/javascript" src="js/display.js"></script>
+<script type="text/javascript" src="js/edit-progress.js"></script>
 
 </body>
 </html>
