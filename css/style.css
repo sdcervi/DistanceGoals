@@ -1,22 +1,26 @@
 /* ---------------------------------- GLOBAL STYLES ---------------------------------- */
-body { padding-top: 4.5rem; }
+body { padding-top: 4.5rem; background-image: url("../assets/bkgd-texture.png"); }
 .goals-container { margin-top: 1.5em; }
 .col { margin-bottom: 1.5em; }
 
 /* ---------------------------------- NAVBAR STYLES ---------------------------------- */
 nav img.logo { max-height: 1.5em; }
 nav h1 { margin: 0; font-size: 1rem; }
+.navbar { background-color: #1C2A48!important; }
+.navbar>.container-fluid { justify-content: center; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
-button.progress-edit { float: right; }
-button.progress-edit img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) brightness(105%) contrast(102%); display: inline-block; vertical-align: -0.2em; }
+button.progress-edit { float: right; font-size: 0.75rem; }
+button.progress-edit img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) brightness(105%) contrast(102%); display: inline-block; vertical-align: -0.1em; width: 20%; height: auto; }
 
 .progress-bar { background-color: darkgreen; }
 .progress-bar.progress-time { background-color: darkblue; }
 
+.race-card { border: 1px solid #A1A1A1; }
+.race-name { background-color: #D1D1D1; border-bottom: 1px solid #A1A1A1; }
 .race-name h3 { font-size: 1.25em; margin-bottom: 0; }
 h4.race-company {font-size: 1.15em; margin-bottom: 0; }
-p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-size: 0.85em; color: slategray; }
+p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-size: 0.85em; color: #67788a; }
 .race-progress { margin: 0.75em 0; }
 .race-progress .progress, .milestone-progress .progress { margin: 0; }
 .progress-header { text-align: right; }
