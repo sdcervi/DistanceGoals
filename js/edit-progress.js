@@ -8,7 +8,7 @@ editProgressModal.addEventListener('show.bs.modal', function (event) {
 });
 
 function editProgress () {
-	const distance = document.getElementById('enter-distance');
+	const distance = parseFloat(document.getElementById('enter-distance').value);
 	const units = document.querySelectorAll('input[name="distance"]');
 	const challenge = challenges[challengeID];
 	let selectedUnit;
@@ -19,11 +19,11 @@ function editProgress () {
 		}
 	}
 	if (selectedUnit == challenge.unit) {
-		challenge.progress = distance.value;
+		challenge.progress = distance;
 	} else if (selectedUnit == "miles" && challenge.unit == "kilometers") {
-		challenge.progress = distance.value * 1.60934;
+		challenge.progress = distance * 1.60934;
 	} else if (selectedUnit == "kilometers" && challenge.unit == "miles") {
-		challenge.progress = distance.value * 0.621371;
+		challenge.progress = distance * 0.621371;
 	} else {
 		alert ("Unit conversion error.");
 	}

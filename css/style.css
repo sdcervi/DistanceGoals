@@ -24,7 +24,7 @@ button.progress-edit img.icon-white { filter: invert(97%) sepia(80%) saturate(0%
 h4.race-company {font-size: 1.15em; margin-bottom: 0; }
 p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-size: 0.85em; color: #67788a; }
 .race-progress { margin: 0.75em 0; }
-.race-progress .progress, .milestone-progress .progress { margin: 0; }
+.race-progress .progress, .milestone-progress .progress { margin: 0; border: 1px #D8DDE1 solid; }
 .progress-header { text-align: right; }
 .progress-header, .progress-display { align-self: center; }
 .race-details { margin-bottom: 1em; }
