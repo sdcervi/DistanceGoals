@@ -10,10 +10,10 @@ nav h1 { margin: 0; font-size: 1rem; }
 .navbar>.container-fluid { justify-content: center; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
-button.progress-edit { float: right; font-size: 0.75rem; background-color: #004d40; border-color: #004d40; }
+button.progress-edit { float: right; background-color: #004d40; border-color: #004d40; margin-left: 0.5em; }
 button.progress-edit:focus, button.progress-edit:hover { background-color: #006064; border-color: #006064; }
 button.progress-edit:active { background-color: #01579b; border-color: #01579b; }
-button.progress-edit img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) brightness(105%) contrast(102%); display: inline-block; vertical-align: -0.1em; width: 20%; height: auto; }
+button.progress-edit img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) brightness(105%) contrast(102%); display: inline-block; vertical-align: -0.1em; height: 1.1em; position: relative; top: 0.1em; }
 
 .progress-bar { background-color: darkgreen; }
 .progress-bar.progress-time { background-color: darkblue; }
