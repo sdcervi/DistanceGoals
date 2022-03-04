@@ -31,16 +31,3 @@ function editProgress () {
 	complete.innerHTML = "";
 	writeCard();	
 }
-
-
-
-//const challengeID = document.getElementById('');
-//const newTeamName = document.getElementById('enter-team-name');
-//if (!teamNameSlot.hasChildNodes()) {
-//	jQuery(document).ready(function(){
-///		$('#editTeamModal').modal('show');
-//	});
-//}
-//function changeTeamName () {
-//	teamNameSlot.innerHTML = newTeamName.value;
-//}

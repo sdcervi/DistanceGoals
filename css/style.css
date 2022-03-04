@@ -21,8 +21,12 @@ p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-s
 .race-progress .progress, .milestone-progress .progress { margin: 0; }
 .progress-header { text-align: right; }
 .progress-header, .progress-display { align-self: center; }
+.race-details { margin-bottom: 1em; }
 .race-details p { margin-bottom: 0; }
+.milestone-progress p { margin-bottom: 0; }
+.milestone-progress .progress-display { width: 100%; }
+.milestone-progress .show-hide { float: right; position: relative; bottom: 0.4em; }
+.milestone-progress .table-responsive { clear: both; }
 .milestone-table tr { font-size: 0.85em; }
 .milestone-table td { vertical-align: bottom; }
 .milestone-table td:first-of-type { margin-right: 0.5em; }
-.milestone-progress .progress-display { width: 100%; }

@@ -1,6 +1,17 @@
 const inProgress = document.getElementById("in-progress");
 const complete = document.getElementById("complete");
 
+function showHide (button) {
+	button = document.getElementById(button);
+	if (button.innerHTML == "Show milestones") {
+		button.innerHTML = "Hide milestones";
+	} else if (button.innerHTML == "Hide milestones") {
+		button.innerHTML = "Show milestones";
+	} else {
+		alert ("Error in milestones show/hide function");
+	}
+}
+
 function writeCard () {
 	for (const counter in challenges) {
 		const challenge = challenges[counter];
@@ -56,11 +67,12 @@ function writeCard () {
 				cardContent += '<div class="progress-bar progress-time" role="progressbar" style="width: ' + (timeSoFar / challenge.period) * 100 + '%;" aria-valuenow="' + (timeSoFar / challenge.period) * 100 + '" aria-valuemin="0" aria-valuemax="100"></div>';
 			}
 			cardContent += '</div></div></div></div>';
-			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + challenge.progress + " " + challenge.unit + '</p>';
+			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + challenge.progress + " " + challenge.unit + '</p></div>';
 			if (challenge.milestones) {
-				cardContent += '<p><strong>Milestones:</strong></p></div><div class="milestone-progress"><div class="table-responsive"><table class="table table-sm table-borderless milestone-table">';
-
-
+				cardContent += '<div class="milestone-progress">';
+				cardContent += '<button class="btn btn-link btn-sm show-hide" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + counter + '" aria-expanded="false" aria-controls="collapse-' + counter + '" id="collapse-button-' + counter + '" onclick="showHide(\'collapse-button-' + counter + '\')">Show milestones</button>';
+				cardContent += '<p><strong>Milestones:</strong></p>';
+				cardContent += '<div class="table-responsive collapse" id="collapse-' + counter + '"><table class="table table-sm table-borderless milestone-table">';
 				let stepCounter = 0;
 				let previousStep = 0;
 				let currentStep = 0;
@@ -113,9 +125,12 @@ function writeCard () {
 				cardContent += '<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Complete!</div>'
 			}
 			cardContent += '</div></div></div></div>';
-			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + challenge.progress + " " + challenge.unit + '</p>';
+			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + challenge.progress + " " + challenge.unit + '</p></div>';
 			if (challenge.milestones) {
-				cardContent += '<p><strong>Milestones:</strong></p></div><div class="milestone-progress"><div class="table-responsive"><table class="table table-sm table-borderless milestone-table">';
+				cardContent += '<div class="milestone-progress">';
+				cardContent += '<button class="btn btn-link btn-sm show-hide" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + counter + '" aria-expanded="false" aria-controls="collapse-' + counter + '" id="collapse-button-' + counter + '" onclick="showHide(\'collapse-button-' + counter + '\')">Show milestones</button>';
+				cardContent += '<p><strong>Milestones:</strong></p>';
+				cardContent += '<div class="table-responsive collapse" id="collapse-' + counter + '"><table class="table table-sm table-borderless milestone-table">';
 				let stepCounter = 0;
 				let previousStep = 0;
 				let currentStep = 0;
