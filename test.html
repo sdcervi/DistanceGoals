@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A simple distance goal tracker for virtual distance challenges without their own apps">
+	<meta name="author" content="Stephanie Cervi">
+	<title>Distance Goal Tracker</title>
+
+	<!-- CSS -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+</head>
+	
+<body>
+	
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<div class="container-fluid">
+		<h1><a class="navbar-brand" href="#"><img src="assets/logo/logo-white.svg" alt="" class="logo"/>&nbsp; Distance Goal Tracker</a></h1>
+	</div>
+</nav>
+	
+<main class="container">
+	
+	<p>This is a sandbox page for testing new features.</p>
+	
+	<form class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+		<div class="mb-3">
+			<label for="storageTest1" class="form-label">Storage item 1</label>
+			<input type="text" class="form-control" id="storageTest1">
+		</div>
+		<div class="mb-3">
+			<label for="storageTest2" class="form-label">Storage item 2</label>
+			<input type="text" class="form-control" id="storageTest2">
+		</div>
+		<div class="mb-3">
+			<label for="storageTest3" class="form-label">Storage item 3</label>
+			<input type="text" class="form-control" id="storageTest3">
+		</div>
+		<button type="submit" class="btn btn-primary" onClick="testLocalStorage('storageTest1', 'storageTest2', 'storageTest3')">Save to local storage</button>
+	</form>
+	
+	<button type="submit" class="btn btn-primary mr-3" onClick="objectTest()">Test object in-out</button>
+	<button type="submit" class="btn btn-primary mr-3" onClick="outputLocalStorage()">Output local storage</button>
+	<button type="submit" class="btn btn-primary mr-3" onClick="clearLocalStorage()">Clear local storage</button>
+	
+	<div id="storageTestOutput"></div>
+	
+</main>
+	
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+<script>
+	const testObject = {
+		name:			"Space Race",
+		company:		"Virtual Running Club",
+		distance:		400,
+		unit:			"miles",
+		period:			false,
+		start:			"2022-02-03T00:00:00",
+		progress:		101.81,
+		complete:		false,	
+		milestones:	[
+			{	name:	"Mercury",	distance:	25		},
+			{	name:	"Venus",	distance:	70		},
+			{	name:	"Earth",	distance:	120		},
+			{	name:	"Mars",		distance:	170		},
+			{	name:	"Jupiter",	distance:	225		},
+			{	name:	"Saturn",	distance:	280		},
+			{	name:	"Uranus",	distance:	340		},
+			{	name:	"Neptune",	distance:	400		}]
+	};
+	function testLocalStorage (id1, id2, id3) {
+		const input1 = document.getElementById(id1).value;
+		const input2 = document.getElementById(id2).value;
+		const input3 = document.getElementById(id3).value;
+		const storageTest = {
+			test1:	input1,
+			test2:	input2,
+			test3:	input3
+		};
+		window.localStorage.setItem('distanceTest', JSON.stringify(storageTest));
+	}
+	function objectTest () {
+		window.localStorage.setItem('distanceTest', JSON.stringify(testObject));
+	}
+	function outputLocalStorage () {
+		const output = JSON.parse(window.localStorage.getItem('distanceTest'));
+		const outputDiv = document.getElementById('storageTestOutput');
+		outputDiv.innerHTML = JSON.stringify(output); // will need to parse number-strings back into numbers
+		console.log (output);
+	}
+	function clearLocalStorage () {
+		window.localStorage.removeItem('distanceTest');
+	}
+</script>
+
+</body>
+</html>
