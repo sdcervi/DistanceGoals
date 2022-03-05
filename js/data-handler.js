@@ -7,7 +7,7 @@ function saveChanges () {
 function exportFile () {
 	let fileOutput = document.createElement("a");
 	fileOutput.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(challenges)));
-	fileOutput.setAttribute("download", "export-test.txt");
+	fileOutput.setAttribute("download", "distance-tracker-data-export.txt");
 	fileOutput.style.display = "none";
 	document.body.appendChild(fileOutput);
 	fileOutput.click();
