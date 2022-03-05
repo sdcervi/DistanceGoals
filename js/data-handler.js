@@ -1,7 +1,7 @@
-let challenges = JSON.parse(window.localStorage.getItem('distanceTest'));
+let challenges = JSON.parse(window.localStorage.getItem('distanceTracker'));
 
 function saveChanges () {
-	window.localStorage.setItem('distanceTest', JSON.stringify(challenges));
+	window.localStorage.setItem('distanceTracker', JSON.stringify(challenges));
 }
 
 function exportFile () {
@@ -21,7 +21,7 @@ function importFile (evt) {
 	reader.onload = (function(theFile) {
 		return function(e) {
 			jQuery('#uploadedFileOutput').val(e.target.result);
-			window.localStorage.setItem('distanceTest', e.target.result);
+			window.localStorage.setItem('distanceTracker', e.target.result);
 			challenges = JSON.parse(e.target.result);
 		};
 	})(file);
@@ -29,7 +29,7 @@ function importFile (evt) {
 }
 
 function deleteData () {
-	window.localStorage.removeItem('distanceTest');
+	window.localStorage.removeItem('distanceTracker');
 }
 
 function resetData () {
