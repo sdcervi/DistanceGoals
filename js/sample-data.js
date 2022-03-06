@@ -81,11 +81,11 @@ const challenges = {
 		progress:		100,
 		complete:		"02/28/2022",
 		milestones:	[
-			{	name:	"Parasaurolophus",		distance:	10		},
-			{	name:	"Triceratops",			distance:	20		},
-			{	name:	"Brachiosaurus",		distance:	40		},
-			{	name:	"Stegosaurus",			distance:	60		},
-			{	name:	"Velociraptor",			distance:	80		},
+			{	name:	"Parasaurolophus",			distance:	10		},
+			{	name:	"Triceratops",				distance:	20		},
+			{	name:	"Brachiosaurus",			distance:	40		},
+			{	name:	"Stegosaurus",				distance:	60		},
+			{	name:	"Velociraptor",				distance:	80		},
 			{	name:	"Tyrannosaurus&nbsp;Rex",	distance:	99.9	}]
 	}
 };
