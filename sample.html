@@ -30,9 +30,8 @@
 	
 <nav class="navbar navbar-light" id="secondary-nav">
 	<div class="container-fluid">
-		<button class="btn btn-secondary btn-sm m-2" onClick="exportFile()"><img src="assets/export-icon.svg" alt="Edit" class="icon-white" />Export</button>
-		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#uploadFileModal" disabled><img src="assets/import-icon.svg" alt="Edit" class="icon-white" />Import</button>
 		<button class="btn btn-secondary btn-sm m-2" onClick="deleteData()"><img src="assets/clear-icon.svg" alt="Edit" class="icon-white" />Clear</button>
+		<button class="btn btn-secondary btn-sm m-2" onClick="resetData()"><img src="assets/reset-icon.svg" alt="Edit" class="icon-white" />Reset to sample</button>
 	</div>
 </nav>
 	
@@ -166,7 +165,6 @@
 					<h5>About this website</h5>
 					<p>This distance tracker is designed to help people who want to track progress toward goals for virtual or real-world distance challenges, if the group hosting the challenge doesn&rsquo;t have a way to sync with fitness tracking apps, or their own tracking system.</p>
 					<p>Rather than enter all your distances in a spreadsheet and do some math to make sure they all add up, this tracker allows you to use a simple, intuitive interface.</p>
-					<p><a href="sample.html">Click here to view some sample data</a>.</p>
 					<h5>How is my data stored?</h5>
 					<p>All your data is stored locally on your own device; you don&rsquo;t need a login, there&rsquo;s no uploading to the cloud, and your privacy is protected.</p>
 					<p>Please note that if you change browsers (Chrome, Firefox, etc.) or move to a different device, you won&rsquo;t be able to access your data.  This is why we have an <strong>Import/Export</strong> feature allowing you to transfer your data between devices easily with a few clicks.</p>
@@ -186,6 +184,7 @@
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/data-handler.js"></script>
+<script type="text/javascript" src="js/sample-data.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
 <script type="text/javascript" src="js/edit-progress.js"></script>
 

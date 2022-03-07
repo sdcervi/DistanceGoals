@@ -2,18 +2,24 @@
 body { padding-top: 4.5rem; background-image: url("../assets/bkgd-texture.png"); }
 .goals-container { margin-top: 1.5em; }
 .col { margin-bottom: 1.5em; }
+img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) brightness(105%) contrast(102%); display: inline-block; vertical-align: -0.1em; height: 1.1em; position: relative; top: 0.1em; }
 
 /* ---------------------------------- NAVBAR STYLES ---------------------------------- */
 nav img.logo { max-height: 1.5em; }
 nav h1 { margin: 0; font-size: 1rem; }
-.navbar { background-color: #1C2A48!important; }
-.navbar>.container-fluid { justify-content: center; }
+.navbar#primary-nav { background-color: #1C2A48!important; }
+.navbar#secondary-nav { padding: 0; top: -25px; background-color: #c0c8cd!important; }
+.navbar#primary-nav>.container-fluid { justify-content: space-between; }
+.navbar#secondary-nav>.container-fluid { justify-content: center; }
+.navbar .nav-buttons button { color: white; font-weight: bold; background-color: #0099cc; border-color: #0099cc; }
+.navbar .nav-buttons button:focus, .navbar .nav-buttons button:hover { background-color: #33b5e5; border-color: #33b5e5; }
+.navbar .nav-buttons button:active { background-color: #2bbbad; border-color: #2bbbad; }
+.navbar#secondary-nav img.icon-white { padding-right: 0.3em; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
 button.progress-edit { float: right; background-color: #004d40; border-color: #004d40; margin-left: 0.5em; }
 button.progress-edit:focus, button.progress-edit:hover { background-color: #006064; border-color: #006064; }
 button.progress-edit:active { background-color: #01579b; border-color: #01579b; }
-button.progress-edit img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) brightness(105%) contrast(102%); display: inline-block; vertical-align: -0.1em; height: 1.1em; position: relative; top: 0.1em; }
 
 .progress-bar { background-color: darkgreen; }
 .progress-bar.progress-time { background-color: darkblue; }

@@ -1,4 +1,4 @@
-const challenges = {
+const sampleData = {
 	zodiac: {
 		name:			"600 Mile Zodiac Challenge",
 		company:		"Medal Chasers",
@@ -89,3 +89,13 @@ const challenges = {
 			{	name:	"Tyrannosaurus&nbsp;Rex",	distance:	99.9	}]
 	}
 };
+
+challenges = sampleData;
+
+function resetData () {
+	challenges = sampleData;
+	inProgress.innerHTML = "";
+	complete.innerHTML = "";
+	writeCard();
+	saveChanges();
+}
