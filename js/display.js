@@ -18,7 +18,7 @@ function writeCard () {
 	}
 	let anyCompleted = false;
 	for (const counter in challenges) {
-		if (challenges.complete != false) {
+		if (challenges[counter].complete != false) {
 			anyCompleted = true;
 		}
 	}
