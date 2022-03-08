@@ -6,12 +6,13 @@ img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) 
 span.form-required { color: red; }
 
 /* ---------------------------------- NAVBAR STYLES ---------------------------------- */
-nav img.logo { max-height: 1.5em; }
-nav h1 { margin: 0; font-size: 1rem; }
 .navbar#primary-nav { background-color: #1C2A48!important; }
 .navbar#secondary-nav { padding: 0; top: -25px; background-color: #c0c8cd!important; }
 .navbar#primary-nav>.container-fluid { justify-content: space-between; }
 .navbar#secondary-nav>.container-fluid { justify-content: center; }
+.navbar-brand { font-size: 1.2rem; position: relative; top: 0.1em; }
+.navbar h1 { margin: 0; font-size: 1rem; }
+.navbar-brand img.logo { max-height: 1.5em; position: relative; bottom: 0.1em; }
 .navbar .nav-buttons button { color: white; font-weight: bold; background-color: #0099cc; border-color: #0099cc; }
 .navbar .nav-buttons button:focus, .navbar .nav-buttons button:hover { background-color: #33b5e5; border-color: #33b5e5; }
 .navbar .nav-buttons button:active { background-color: #2bbbad; border-color: #2bbbad; }
@@ -19,6 +20,7 @@ nav h1 { margin: 0; font-size: 1rem; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
 button.progress-edit { float: right; background-color: #004d40; border-color: #004d40; margin-left: 0.5em; }
+button.progress-edit:first-of-type { margin-right: -0.6em; }
 button.progress-edit:focus, button.progress-edit:hover { background-color: #006064; border-color: #006064; }
 button.progress-edit:active { background-color: #006ABE; border-color: #006ABE; }
 button.add-button { float: right; position: relative; bottom: 0.4em; background-color: #01579b; border-color: #01579b; }
