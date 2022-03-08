@@ -21,12 +21,17 @@ span.form-required { color: red; }
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
 button.progress-edit { float: right; background-color: #004d40; border-color: #004d40; margin-left: 0.5em; }
 button.progress-edit:first-of-type { margin-right: -0.6em; }
-button.progress-edit:focus, button.progress-edit:hover { background-color: #006064; border-color: #006064; }
+button.progress-edit:focus, button.progress-edit:hover { background-color: #00715E; border-color: #00715E; }
 button.progress-edit:active { background-color: #006ABE; border-color: #006ABE; }
 button.add-button { float: right; position: relative; bottom: 0.4em; background-color: #01579b; border-color: #01579b; }
 button.add-button:focus, button.add-button:hover { background-color: #0277bd; border-color: #0277bd; }
 button.add-button:active { background-color: #00838f; border-color: #00838f; }
 button.add-button img.icon-white { margin-right: 0.5em; }
+button.data-button { float: right; background-color: #00796b; border-color: #00796b; }
+button.data-button:focus, button.data-button:hover { background-color: #009688; border-color: #009688; }
+button.data-button:active { background-color: #0288d1; border-color: #0288d1; }
+button.data-button:disabled { background-color: #6c757d; border-color: #6c757d; }
+button.data-button img.icon-white { margin-right: 0.5em; }
 
 .progress-bar { background-color: darkgreen; }
 .progress-bar.progress-time { background-color: darkblue; }
