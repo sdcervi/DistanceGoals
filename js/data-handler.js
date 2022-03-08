@@ -36,18 +36,76 @@ function exportFile () {
 	document.body.removeChild(fileOutput); // Removes the link from the end of the HTML document
 }
 
-// Imports data from a user-uploaded file
+// Imports data from a user-uploaded file and validates the contents
 function importFile (event) {
 	let userUpload = event.target.files; // When a user uploads a file
 	let file = userUpload[0]; // Get the data from the first item in the array
-	let reader = new FileReader(); // Create a new reader object
-	reader.onload = (function(theFile) { // When the reader is invoked
-		return function(e) {
-			window.localStorage.setItem('distanceTracker', e.target.result); // Load contents of file into localStorage object
-			challenges = JSON.parse(e.target.result); // Parse the JSON and load that into our challenges object
-		};
-	})(file); // Pass the user-uploaded file into the anonymous function
-	reader.readAsText(file); // Invoke reader on the user-uploaded file
+	// Validate file name, file size, and file type
+	if (file.name === 'distance-tracker-data-export.txt' && file.size < 5000 && file.size > 0 && file.type === 'text/plain') { 
+		let reader = new FileReader(); // Create a new reader object
+		reader.onload = (function(theFile) { // When the reader is invoked
+			return function(e) {
+				challenges = JSON.parse(e.target.result); // Parse the JSON and load that into our challenges object
+				if (Object.keys(challenges).length === 0) { // Check to see if there is usable data in that object
+					alert ('File validation error: empty file.');
+				} else {
+					for (const counter in challenges) {
+						const challenge = challenges[counter];
+						
+						// Validate that all values for each key have the correct data type
+						if (typeof challenge.name != 'string') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.name + ' is not a string');
+							break;
+						}
+						if (typeof challenge.company != 'string') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.company + ' is not a string');
+							break;
+						} 
+						if (typeof parseFloat(challenge.distance) != 'number') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.distance + ' is not a number');
+							break;
+						} 
+						if (typeof challenge.unit != 'string') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.unit + ' is not a string');
+							break;
+						} 
+						if (typeof challenge.period != 'boolean' && typeof parseFloat(challenge.period) != 'number') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.period + ' is not a number or boolean');
+							break;
+						} 
+						if (typeof challenge.start != 'string') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.start + ' is not a string');
+							break;
+						} 
+						if (typeof parseFloat(challenge.progress) != 'number') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.progress + ' is not a number');
+							break;
+						}
+						if (typeof challenge.complete != 'boolean' && typeof challenge.complete != 'string') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.complete + ' is not a string or boolean');
+							break;
+						}
+						if (typeof challenge.milestones != 'object') {
+							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.milestones + ' is not an object');
+							break;
+						}
+					}
+					window.localStorage.setItem('distanceTracker', e.target.result); // Load contents of file into localStorage object
+				}
+			};
+		})(file); // Pass the user-uploaded file into the anonymous function
+		reader.readAsText(file); // Invoke reader on the user-uploaded file
+	} else if (file.name != 'distance-tracker-data-export.txt') {
+		alert ('File validation error: name incorrect.');
+	} else if (file.size == 0) {
+		alert ('File validation error: file too small');
+	} else if (file.size > 5000) {
+		alert ('File validation error: file too large');
+	} else if (file.type != 'text/plain') {
+		alert ('File validation error: incorrect file type');
+	} else {
+		alert ('File validation error: unknown error');
+	}
 }
 document.getElementById('uploadFile').addEventListener('change', importFile, false); // Event handler to trigger upload once user selects a file with the browser
 
