@@ -93,9 +93,9 @@ const sampleData = {
 challenges = sampleData;
 
 function resetData () {
-	challenges = sampleData;
 	inProgress.innerHTML = "";
 	complete.innerHTML = "";
+	challenges = sampleData;
 	writeCard();
 	saveChanges();
 }

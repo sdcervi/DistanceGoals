@@ -13,6 +13,18 @@ function showHide (button) {
 }
 
 function writeCard () {
+	if (Object.keys(challenges).length === 0) {
+		inProgress.innerHTML += '<p>Add some challenges to get started!</p>';
+	}
+	let anyCompleted = false;
+	for (const counter in challenges) {
+		if (challenges.complete != false) {
+			anyCompleted = true;
+		}
+	}
+	if (anyCompleted == false) {
+		complete.innerHTML += '<p>Looks like you haven&rsquo;t completed any challenges yet.</p>';
+	}
 	for (const counter in challenges) {
 		const challenge = challenges[counter];
 		if (challenge.progress >= challenge.distance && !challenge.complete) {
@@ -27,14 +39,14 @@ function writeCard () {
 			timeSoFar = Math.floor(timeSoFar / (1000 * 3600 * 24));
 			let progress = Math.floor((challenge.progress / challenge.distance) * 100);
 			let cardContent = '<article class="col" id="' + counter +'"><div class="card race-card">';
-			cardContent += '<div class="card-header race-name"><button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#editProgressModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" /></button><button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#addProgressModal" data-bs-challenge="' + counter + '"><img src="assets/add-icon.svg" alt="Edit" class="icon-white" /></button><h3>' + challenge.name + '</h3></div>';
+			cardContent += '<div class="card-header race-name"><button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#deleteChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/clear-icon.svg" alt="Delete" class="icon-white" /></button><button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#editProgressModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" /></button><button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#addProgressModal" data-bs-challenge="' + counter + '"><img src="assets/add-icon.svg" alt="Edit" class="icon-white" /></button><h3>' + challenge.name + '</h3></div>';
 			cardContent += '<div class="card-body">';
 			if (challenge.period) {
 				cardContent += '<p class="race-period">Finishes: ' + endDate.toDateString() + '</p>';
 			}
 			cardContent += '<h4 class="card-title race-company">' + challenge.company + '</h4>';
 			cardContent += '<div class="race-progress"><div class="row"><div class="col-3 progress-header">Distance</div><div class="col-9 progress-display"><div class="progress">';
-			if (challenge.milestones) {
+			if (Object.keys(challenge.milestones).length > 0) {
 				let stepCounter = 1;
 				let stepSize = 0;
 				let previousStep = 0;
@@ -68,7 +80,7 @@ function writeCard () {
 			}
 			cardContent += '</div></div></div></div>';
 			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + challenge.progress + " " + challenge.unit + '</p></div>';
-			if (challenge.milestones) {
+			if (Object.keys(challenge.milestones).length > 0) {
 				cardContent += '<div class="milestone-progress">';
 				cardContent += '<button class="btn btn-link btn-sm show-hide" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + counter + '" aria-expanded="false" aria-controls="collapse-' + counter + '" id="collapse-button-' + counter + '" onclick="showHide(\'collapse-button-' + counter + '\')">Show milestones</button>';
 				cardContent += '<p><strong>Milestones:</strong></p>';
