@@ -36,7 +36,6 @@
 	
 <nav class="navbar navbar-light" id="secondary-nav">
 	<div class="container-fluid">
-		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#addChallengeModal"><img src="assets/add-icon.svg" alt="" class="icon-white" />Add challenge</button>
 		<button class="btn btn-secondary btn-sm m-2" onClick="exportFile()" id="exportButton"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
 		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#uploadFileModal"><img src="assets/import-icon.svg" alt="" class="icon-white" />Import</button>
 		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#clearModal"><img src="assets/clear-icon.svg" alt="" class="icon-white" />Clear</button>
@@ -44,6 +43,8 @@
 </nav>
 	
 <main class="container">
+	
+	<button class="btn btn-primary btn-sm m-2 add-button" data-bs-toggle="modal" data-bs-target="#addChallengeModal"><img src="assets/add-icon.svg" alt="" class="icon-white" />New</button>
 	
 	<h2>Challenges in progress</h2>
 	
@@ -59,7 +60,9 @@
 		
 	</section>
 	
-	<!--p class="text-end"><button class="btn btn-link btn-sm m-2 small text-muted" data-bs-toggle="modal" data-bs-target="#uploadFileModal" disabled>Import data</button></p-->
+	<footer>
+		<p class="small text-muted">&copy;<span id="copyYear"></span> Stephanie Cervi</p>
+	</footer>
 	
 	<!-- Edit progress modal -->
 	<div class="modal fade" id="editProgressModal" tabindex="-1" aria-labelledby="editProgressModalLabel" aria-hidden="true">
@@ -330,6 +333,10 @@
 <script type="text/javascript" src="js/data-handler.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
 <script type="text/javascript" src="js/edit-progress.js"></script>
+<script>
+	const copyYear = document.getElementById('copyYear');
+	copyYear.innerHTML = new Date().getFullYear();
+</script>
 
 </body>
 </html>

@@ -15,12 +15,16 @@ nav h1 { margin: 0; font-size: 1rem; }
 .navbar .nav-buttons button { color: white; font-weight: bold; background-color: #0099cc; border-color: #0099cc; }
 .navbar .nav-buttons button:focus, .navbar .nav-buttons button:hover { background-color: #33b5e5; border-color: #33b5e5; }
 .navbar .nav-buttons button:active { background-color: #2bbbad; border-color: #2bbbad; }
-.navbar#secondary-nav img.icon-white { padding-right: 0.3em; }
+.navbar#secondary-nav img.icon-white { margin-right: 0.5em; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
 button.progress-edit { float: right; background-color: #004d40; border-color: #004d40; margin-left: 0.5em; }
 button.progress-edit:focus, button.progress-edit:hover { background-color: #006064; border-color: #006064; }
-button.progress-edit:active { background-color: #01579b; border-color: #01579b; }
+button.progress-edit:active { background-color: #006ABE; border-color: #006ABE; }
+button.add-button { float: right; position: relative; bottom: 0.4em; background-color: #01579b; border-color: #01579b; }
+button.add-button:focus, button.add-button:hover { background-color: #0277bd; border-color: #0277bd; }
+button.add-button:active { background-color: #00838f; border-color: #00838f; }
+button.add-button img.icon-white { margin-right: 0.5em; }
 
 .progress-bar { background-color: darkgreen; }
 .progress-bar.progress-time { background-color: darkblue; }
