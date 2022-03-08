@@ -37,7 +37,6 @@ function importFile (evt) {
 		};
 	})(file);
 	reader.readAsText(file);
-	location.reload();
 }
 
 function deleteData () {
