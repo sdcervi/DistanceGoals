@@ -47,3 +47,20 @@ p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-s
 .milestone-table tr { font-size: 0.85em; }
 .milestone-table td { vertical-align: bottom; }
 .milestone-table td:first-of-type { margin-right: 0.5em; }
+
+/* ---------------------------------- MEDIA QUERIES ---------------------------------- */
+@media (min-width: 576px) {
+	.navbar#primary-nav>.container-fluid { max-width: 540px; }
+}
+@media (min-width: 768px) {
+	.navbar#primary-nav>.container-fluid { max-width: 720px; }
+}
+@media (min-width: 992px) {
+	.navbar#primary-nav>.container-fluid { max-width: 960px; }
+}
+@media (min-width: 1200px) {
+	.navbar#primary-nav>.container-fluid { max-width: 1140px; }
+}
+@media (min-width: 1400px) {
+	.navbar#primary-nav>.container-fluid { max-width: 1320px; }
+}
