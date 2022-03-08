@@ -15,6 +15,11 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+	
+	<!-- Meta details to launch in full-screen if added as a homescreen app -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="mainfest" href="manifest.json">
 </head>
 	
 <body>
@@ -32,7 +37,7 @@
 <nav class="navbar navbar-light" id="secondary-nav">
 	<div class="container-fluid">
 		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#addChallengeModal"><img src="assets/add-icon.svg" alt="" class="icon-white" />Add challenge</button>
-		<button class="btn btn-secondary btn-sm m-2" onClick="exportFile()"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
+		<button class="btn btn-secondary btn-sm m-2" onClick="exportFile()" id="exportButton"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
 		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#uploadFileModal"><img src="assets/import-icon.svg" alt="" class="icon-white" />Import</button>
 		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#clearModal"><img src="assets/clear-icon.svg" alt="" class="icon-white" />Clear</button>
 	</div>

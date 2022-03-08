@@ -20,6 +20,9 @@ function writeCard () {
 	// If the challenges object is empty (length of keys array is 0), add default text instead
 	if (Object.keys(challenges).length === 0) {
 		inProgress.innerHTML += '<p>Add some challenges to get started!</p>';
+		const exportButton = document.getElementById('exportButton');
+		exportButton.setAttribute('disabled', true);
+		exportButton.setAttribute('tab-index', -1);
 	}
 	
 	// Tests whether there are any completed challenges, with fallback default text
