@@ -10,7 +10,7 @@ span.form-required { color: red; }
 .navbar#secondary-nav { padding: 0; top: -25px; background-color: #c0c8cd!important; }
 .navbar#primary-nav>.container-fluid { justify-content: space-between; }
 .navbar#secondary-nav>.container-fluid { justify-content: center; }
-.navbar-brand { font-size: 1.2rem; position: relative; top: 0.1em; }
+.navbar-brand { font-size: 1.1rem; position: relative; top: 0.1em; }
 .navbar h1 { margin: 0; font-size: 1rem; }
 .navbar-brand img.logo { max-height: 1.5em; max-width: 1.5em; position: relative; bottom: 0.1em; }
 .navbar .nav-buttons button { color: white; font-weight: bold; background-color: #0099cc; border-color: #0099cc; }
