@@ -15,30 +15,41 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+	
+	<!-- Meta details to launch in full-screen if added as a homescreen app -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="mainfest" href="manifest.json">
 </head>
 	
 <body>
 	
-<nav class="navbar navbar-dark fixed-top bg-dark" id="primary-nav">
-	<div class="container-fluid">
+<nav class="navbar navbar-dark fixed-top bg-dark" id="primary-nav" style="padding: 0.5rem;" >
+	<h1><a class="navbar-brand" href="#"><img src="assets/logo/logo-white.svg" alt="" class="logo"/>&nbsp;Distance Goal Tracker</a></h1>
+	<div class="nav-buttons">
+		<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
+		<a href="demo.html"><button class="btn btn-sm btn-primary ms-2">Demo</button></a>
+	</div>
+	<!--div class="container-fluid">
 		<h1><a class="navbar-brand" href="#"><img src="assets/logo/logo-white.svg" alt="" class="logo"/>&nbsp;Distance Goal Tracker</a></h1>
 		<div class="nav-buttons">
 			<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
-			<button class="btn btn-sm btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#resetModal"><img src="assets/reset-icon.svg" alt="Edit" class="icon-white" />&nbsp;Reset data</button-->
+			<a href="demo.html"><button class="btn btn-sm btn-primary ms-2">Demo</button></a>
 		</div>
-	</div>
+	</div-->
 </nav>
 	
 <nav class="navbar navbar-light" id="secondary-nav">
 	<div class="container-fluid">
-		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#addChallengeModal"><img src="assets/add-icon.svg" alt="" class="icon-white" />Add challenge</button>
-		<button class="btn btn-secondary btn-sm m-2" onClick="exportFile()"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
+		<button class="btn btn-secondary btn-sm m-2" onClick="exportFile()" id="exportButton"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
 		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#uploadFileModal"><img src="assets/import-icon.svg" alt="" class="icon-white" />Import</button>
 		<button class="btn btn-secondary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#clearModal"><img src="assets/clear-icon.svg" alt="" class="icon-white" />Clear</button>
 	</div>
 </nav>
 	
 <main class="container">
+	
+	<button class="btn btn-primary btn-sm m-2 add-button" data-bs-toggle="modal" data-bs-target="#addChallengeModal"><img src="assets/add-icon.svg" alt="" class="icon-white" />New</button>
 	
 	<h2>Challenges in progress</h2>
 	
@@ -54,7 +65,9 @@
 		
 	</section>
 	
-	<!--p class="text-end"><button class="btn btn-link btn-sm m-2 small text-muted" data-bs-toggle="modal" data-bs-target="#uploadFileModal" disabled>Import data</button></p-->
+	<footer>
+		<p class="small text-muted">&copy;<span id="copyYear"></span> Stephanie Cervi</p>
+	</footer>
 	
 	<!-- Edit progress modal -->
 	<div class="modal fade" id="editProgressModal" tabindex="-1" aria-labelledby="editProgressModalLabel" aria-hidden="true">
@@ -218,16 +231,17 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
+					<p>Please select your exported data file:</p>
 					<input class="form-control col" type="file" id="uploadFile" accept="text/plain" name="files[]">
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" id="upload-file-button" data-bs-dismiss="modal">Submit</button>
+					<button type="submit" class="btn btn-primary" id="upload-file-button" data-bs-dismiss="modal" onclick="location.reload();">Submit</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<!-- Upload file modal -->
+	<!-- About page modal -->
 	<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -239,7 +253,7 @@
 					<h5>About this website</h5>
 					<p>This distance tracker is designed to help people who want to track progress toward goals for virtual or real-world distance challenges, if the group hosting the challenge doesn&rsquo;t have a way to sync with fitness tracking apps, or their own tracking system.</p>
 					<p>Rather than enter all your distances in a spreadsheet and do some math to make sure they all add up, this tracker allows you to use a simple, intuitive interface.</p>
-					<p><a href="sample.html">Click here to view some sample data</a>.</p>
+					<p><a href="demo.html">Click here to view some sample data</a>.</p>
 					<h5>How is my data stored?</h5>
 					<p>All your data is stored locally on your own device; you don&rsquo;t need a login, there&rsquo;s no uploading to the cloud, and your privacy is protected.</p>
 					<p>Please note that if you change browsers (Chrome, Firefox, etc.) or move to a different device, you won&rsquo;t be able to access your data.  This is why we have an <strong>Import/Export</strong> feature allowing you to transfer your data between devices easily with a few clicks.</p>
@@ -278,16 +292,16 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="resetModalLabel">Please confirm resetting to sample data</h4>
+					<h4 class="modal-title" id="resetModalLabel">Please confirm resetting to demo data</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<h5>Delete all your data and reset to the sample data set?</h5>
+					<h5>Delete all your data and reset to the demo data set?</h5>
 					<p>Please confirm that you want to clear all of your data.  This is unrecoverable, and we recommend exporting your data first.</p>
 				</div>
 				<div class="modal-footer">
 					<button type="cancel" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-					<button type="submit" class="btn btn-success" data-bs-dismiss="modal" onClick="resetData()">Delete my data</button>
+					<button type="submit" class="btn btn-success" data-bs-dismiss="modal" onClick="resetData()">Reset to demo data</button>
 				</div>
 			</div>
 		</div>
@@ -321,10 +335,13 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
-<!--script type="text/javascript" src="js/sample-data.js"></script-->
 <script type="text/javascript" src="js/data-handler.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
 <script type="text/javascript" src="js/edit-progress.js"></script>
+<script>
+	const copyYear = document.getElementById('copyYear');
+	copyYear.innerHTML = new Date().getFullYear();
+</script>
 
 </body>
 </html>
