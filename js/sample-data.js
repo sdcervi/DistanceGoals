@@ -30,7 +30,8 @@ const sampleData = {
 		period:			false,
 		start:			"2022-03-01T00:00:00",
 		progress:		2.53,
-		complete:		false
+		complete:		false,
+		milestones:		[]
 	},
 	dragon: {
 		name:			"Unleash the Dragon Within",
@@ -40,7 +41,8 @@ const sampleData = {
 		period:			false,
 		start:			"2022-03-01T00:00:00",
 		progress:		3.46,
-		complete:		false
+		complete:		false,
+		milestones:		[]
 	},
 	ring: {
 		name:			"One Run to Rule Them All",
@@ -50,7 +52,8 @@ const sampleData = {
 		period:			false,
 		start:			"2022-03-01T00:00:00",
 		progress:		4.70,
-		complete:		false
+		complete:		false,
+		milestones:		[]
 	},
 	space_race: {
 		name:			"Space Race",
@@ -90,7 +93,7 @@ const sampleData = {
 	}
 };
 
-challenges = sampleData;
+//challenges = sampleData;
 
 function resetData () {
 	inProgress.innerHTML = "";
