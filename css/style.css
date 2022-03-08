@@ -57,6 +57,8 @@ p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-s
 
 /* ---------------------------------- MEDIA QUERIES ---------------------------------- */
 @media (max-width: 400px) {
+	h2 { font-size: calc(1.2rem + .9vw); }
+	h3 { font-size: 1.1em; }
 	.navbar-brand { font-size: 0.95rem; }
 	.progress-header { font-size: 0.85em; }
 }

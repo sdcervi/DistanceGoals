@@ -12,7 +12,7 @@ deleteChallengeModal.addEventListener('show.bs.modal', function (event) {
 	const button = event.relatedTarget;
 	deleteChallengeID = button.getAttribute('data-bs-challenge');
 	const modalBodyInput = deleteChallengeModal.querySelector('.modal-body #challenge-delete-name');
-	modalBodyInput.value = challenges[deleteChallengeID].name;
+	modalBodyInput.value = challenges[deleteChallengeID].name.replace(/&amp;/g, "&");
 });
 function deleteChallenge () {
 	delete challenges[deleteChallengeID];

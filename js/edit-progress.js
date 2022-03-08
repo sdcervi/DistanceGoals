@@ -8,7 +8,7 @@ editProgressModal.addEventListener('show.bs.modal', function (event) {
 	const button = event.relatedTarget;
 	challengeID = button.getAttribute('data-bs-challenge');
 	const modalBodyInput = editProgressModal.querySelector('.modal-body #challenge-edit-name');
-	modalBodyInput.value = challenges[challengeID].name;
+	modalBodyInput.value = challenges[challengeID].name.replace(/&amp;/g, "&");
 });
 
 // Gets a challenge's name via challenge ID passed by button, and places that into the modal
@@ -16,7 +16,7 @@ addProgressModal.addEventListener('show.bs.modal', function (event) {
 	const button = event.relatedTarget;
 	challengeID = button.getAttribute('data-bs-challenge');
 	const modalBodyInput = addProgressModal.querySelector('.modal-body #challenge-add-name');
-	modalBodyInput.value = challenges[challengeID].name;
+	modalBodyInput.value = challenges[challengeID].name.replace(/&amp;/g, "&");
 });
 
 // Add to a challenge's progress, incrementing by user-entered amount
