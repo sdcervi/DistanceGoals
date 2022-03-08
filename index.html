@@ -24,7 +24,7 @@
 		<h1><a class="navbar-brand" href="#"><img src="assets/logo/logo-white.svg" alt="" class="logo"/>&nbsp;Distance Goal Tracker</a></h1>
 		<div class="nav-buttons">
 			<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
-			<button class="btn btn-sm btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#resetModal"><img src="assets/reset-icon.svg" alt="Edit" class="icon-white" />&nbsp;Reset data</button-->
+			<button class="btn btn-sm btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#resetModal">Load demo data</button-->
 		</div>
 	</div>
 </nav>
@@ -278,16 +278,16 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="resetModalLabel">Please confirm resetting to sample data</h4>
+					<h4 class="modal-title" id="resetModalLabel">Please confirm resetting to demo data</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<h5>Delete all your data and reset to the sample data set?</h5>
+					<h5>Delete all your data and reset to the demo data set?</h5>
 					<p>Please confirm that you want to clear all of your data.  This is unrecoverable, and we recommend exporting your data first.</p>
 				</div>
 				<div class="modal-footer">
 					<button type="cancel" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-					<button type="submit" class="btn btn-success" data-bs-dismiss="modal" onClick="resetData()">Delete my data</button>
+					<button type="submit" class="btn btn-success" data-bs-dismiss="modal" onClick="resetData()">Reset to demo data</button>
 				</div>
 			</div>
 		</div>
@@ -321,7 +321,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
-<!--script type="text/javascript" src="js/sample-data.js"></script-->
+<script type="text/javascript" src="js/sample-data.js"></script>
 <script type="text/javascript" src="js/data-handler.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
 <script type="text/javascript" src="js/edit-progress.js"></script>
