@@ -148,7 +148,13 @@ function addChallenge () {
 	const name = document.getElementById('challenge-new-name').value;
 	const challengeID = name.toLowerCase().replace(/ /g,"_");
 	const company = document.getElementById('challenge-new-company').value;
-	const distance = parseFloat(document.getElementById('enter-distance-new').value);
+	let distance;
+	if (parseFloat(document.getElementById('enter-distance-new').value)) {
+		distance = parseFloat(document.getElementById('enter-distance-new').value); // Convert to number; will discard any non-numeric values
+	} else if (typeof document.getElementById('enter-distance-new').value == 'string') {
+		alert ("Error: invalid format for distance. Please enter a number using the digits 0-9. Decimal places are allowed.");
+		return;
+	}
 	const unitList = document.querySelectorAll('input[name="distance-new"]');
 	let distanceUnit;
 	for (const unit of unitList) { // Get the selected unit from the list of units available
@@ -160,7 +166,7 @@ function addChallenge () {
 	let period;
 	if (parseFloat(document.getElementById('challenge-new-period').value)) {
 		period = parseFloat(document.getElementById('challenge-new-period').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
-	} else if (typeof parseFloat(document.getElementById('challenge-new-period').value) == 'string') {
+	} else {
 		alert ("Error: invalid format for time period. Please enter a number using the digits 0-9.");
 		return;
 	}
