@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,27 +22,30 @@
 	<link rel="mainfest" href="manifest.json">
 </head>
 	
-<body>
+<body class="d-flex flex-column h-100">
 	
-<nav class="navbar navbar-dark fixed-top bg-dark" id="primary-nav">
-	<div class="container-fluid">
-		<h1><a class="navbar-brand" href="#"><img src="assets/logo/logo-white.svg" alt="" class="logo"/>&nbsp;Distance Goal Tracker</a></h1>
-		<div class="nav-buttons">
-			<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
-			<a href="demo.html"><button class="btn btn-sm btn-primary ms-2">Demo</button></a>
+<header>	
+	<nav class="navbar navbar-dark fixed-top bg-dark" id="primary-nav">
+		<div class="container-fluid">
+			<h1><a class="navbar-brand" href="#"><img src="assets/logo/logo-white.svg" alt="" class="logo"/>&nbsp;Distance Goal Tracker</a></h1>
+			<div class="nav-buttons">
+				<a href="demo.html"><button class="btn btn-sm btn-primary">Demo</button></a>
+				<button class="btn btn-sm btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
+			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
+
+	<nav class="navbar navbar-light" id="secondary-nav">
+		<div class="container-fluid">
+			<button class="btn btn-primary btn-sm m-2 data-button" onClick="exportFile()" id="exportButton"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
+			<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#uploadFileModal"><img src="assets/import-icon.svg" alt="" class="icon-white" />Import</button>
+			<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#clearModal"><img src="assets/clear-icon.svg" alt="" class="icon-white" />Clear</button>
+		</div>
+	</nav>
+</header>
 	
-<nav class="navbar navbar-light" id="secondary-nav">
-	<div class="container-fluid">
-		<button class="btn btn-primary btn-sm m-2 data-button" onClick="exportFile()" id="exportButton"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
-		<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#uploadFileModal"><img src="assets/import-icon.svg" alt="" class="icon-white" />Import</button>
-		<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#clearModal"><img src="assets/clear-icon.svg" alt="" class="icon-white" />Clear</button>
-	</div>
-</nav>
-	
-<main class="container">
+<main class="flex-shrink-0">
+<div class="container">
 	
 	<button class="btn btn-primary btn-sm m-2 add-button" data-bs-toggle="modal" data-bs-target="#addChallengeModal"><img src="assets/add-icon.svg" alt="" class="icon-white" />New</button>
 	
@@ -59,10 +62,6 @@
 	<section class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 goals-container" id="complete">
 		
 	</section>
-	
-	<footer>
-		<p class="small text-muted">&copy;<span id="copyYear"></span> Stephanie Cervi</p>
-	</footer>
 	
 	<!-- Edit progress modal -->
 	<div class="modal fade" id="editProgressModal" tabindex="-1" aria-labelledby="editProgressModalLabel" aria-hidden="true">
@@ -325,7 +324,14 @@
 		</div>
 	</div>
 	
+</div>
 </main>
+	
+<footer class="footer mt-auto">
+	<div class="container">
+		<p class="small text-muted">&copy;<span id="copyYear"></span> Stephanie Cervi</p>
+	</div>
+</footer>
 	
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>

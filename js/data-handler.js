@@ -167,7 +167,7 @@ function addChallenge () {
 	if (parseFloat(document.getElementById('challenge-new-period').value)) {
 		period = parseFloat(document.getElementById('challenge-new-period').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
 	} else {
-		alert ("Error: invalid format for time period. Please enter a number using the digits 0-9.");
+		alert ("Error: invalid format for time period. Please enter a whole number without a decimal point using the digits 0-9.");
 		return;
 	}
 	const periodUnit = document.getElementById('challenge-new-period-unit').value;

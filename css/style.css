@@ -4,6 +4,7 @@ body { padding-top: 4.5rem; background-image: url("../assets/bkgd-texture.png");
 .col { margin-bottom: 1.5em; }
 img.icon-white { filter: invert(97%) sepia(80%) saturate(0%) hue-rotate(214deg) brightness(105%) contrast(102%); display: inline-block; vertical-align: -0.1em; height: 1.1em; position: relative; top: 0.1em; }
 span.form-required { color: red; }
+footer p { text-align: center; font-size: 0.75em; color: #6c757d; }
 
 /* ---------------------------------- NAVBAR STYLES ---------------------------------- */
 .navbar#primary-nav { background-color: #1C2A48!important; }
@@ -13,9 +14,10 @@ span.form-required { color: red; }
 .navbar-brand { font-size: 1.1rem; position: relative; top: 0.1em; }
 .navbar h1 { margin: 0; font-size: 1rem; }
 .navbar-brand img.logo { max-height: 1.5em; max-width: 1.5em; position: relative; bottom: 0.1em; }
-.navbar .nav-buttons button { color: white; font-weight: bold; background-color: #0099cc; border-color: #0099cc; }
+.navbar .nav-buttons button { color: white; background-color: #0099cc; border-color: #0099cc; }
 .navbar .nav-buttons button:focus, .navbar .nav-buttons button:hover { background-color: #33b5e5; border-color: #33b5e5; }
 .navbar .nav-buttons button:active { background-color: #2bbbad; border-color: #2bbbad; }
+.navbar .nav-buttons button.active { background-color: #00a743; border-color: #00a743; }
 .navbar#secondary-nav img.icon-white { margin-right: 0.5em; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
@@ -59,7 +61,6 @@ p.race-period { float: right; vertical-align: baseline; margin-bottom: 0; font-s
 @media (max-width: 400px) {
 	h2 { font-size: calc(1.2rem + .9vw); }
 	h3 { font-size: 1.1em; }
-	.navbar-brand { font-size: 0.95rem; }
 	.progress-header { font-size: 0.85em; }
 }
 @media (min-width: 576px) {

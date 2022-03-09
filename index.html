@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,27 +22,22 @@
 	<link rel="mainfest" href="manifest.json">
 </head>
 	
-<body>
+<body class="d-flex flex-column h-100">
 	
-<nav class="navbar navbar-dark fixed-top bg-dark" id="primary-nav">
-	<div class="container-fluid">
-		<h1><a class="navbar-brand" href="#"><img src="assets/logo/logo-white.svg" alt="" class="logo"/>&nbsp;Distance Goal Tracker</a></h1>
-		<div class="nav-buttons">
-			<a href="demo.html"><button class="btn btn-sm btn-primary">Demo</button></a>
-			<button class="btn btn-sm btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
+<header>	
+	<nav class="navbar navbar-dark fixed-top bg-dark" id="primary-nav"></nav>
+
+	<nav class="navbar navbar-light" id="secondary-nav">
+		<div class="container-fluid">
+			<button class="btn btn-primary btn-sm m-2 data-button" onClick="exportFile()" id="exportButton"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
+			<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#uploadFileModal"><img src="assets/import-icon.svg" alt="" class="icon-white" />Import</button>
+			<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#clearModal"><img src="assets/clear-icon.svg" alt="" class="icon-white" />Clear</button>
 		</div>
-	</div>
-</nav>
+	</nav>
+</header>
 	
-<nav class="navbar navbar-light" id="secondary-nav">
-	<div class="container-fluid">
-		<button class="btn btn-primary btn-sm m-2 data-button" onClick="exportFile()" id="exportButton"><img src="assets/export-icon.svg" alt="" class="icon-white" />Export</button>
-		<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#uploadFileModal"><img src="assets/import-icon.svg" alt="" class="icon-white" />Import</button>
-		<button class="btn btn-primary btn-sm m-2 data-button" data-bs-toggle="modal" data-bs-target="#clearModal"><img src="assets/clear-icon.svg" alt="" class="icon-white" />Clear</button>
-	</div>
-</nav>
-	
-<main class="container">
+<main class="flex-shrink-0">
+<div class="container">
 	
 	<button class="btn btn-primary btn-sm m-2 add-button" data-bs-toggle="modal" data-bs-target="#addChallengeModal"><img src="assets/add-icon.svg" alt="" class="icon-white" />New</button>
 	
@@ -59,10 +54,6 @@
 	<section class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 goals-container" id="complete">
 		
 	</section>
-	
-	<footer>
-		<p class="small text-muted">&copy;<span id="copyYear"></span> Stephanie Cervi</p>
-	</footer>
 	
 	<!-- Edit progress modal -->
 	<div class="modal fade" id="editProgressModal" tabindex="-1" aria-labelledby="editProgressModalLabel" aria-hidden="true">
@@ -241,19 +232,25 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="aboutModalLabel">About</h4>
+					<h4 class="modal-title" id="aboutModalLabel">About Distance Goals</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<h5>About this website</h5>
-					<p>This distance tracker is designed to help people who want to track progress toward goals for virtual or real-world distance challenges, if the group hosting the challenge doesn&rsquo;t have a way to sync with fitness tracking apps, or their own tracking system.</p>
-					<p>Rather than enter all your distances in a spreadsheet and do some math to make sure they all add up, this tracker allows you to use a simple, intuitive interface.</p>
-					<p><a href="demo.html">Click here to view some sample data</a>.</p>
+					<p>Distance Goals is a web app designed to help people track progress toward goals for virtual or real-world distance challenges. Some challenge hosts have no way to sync with fitness tracking apps, or their own usable tracking system.</p>
+					<p>Don&rsquo;t waste time fiddling with spreadsheets or doing math by hand in a notebook; Distance Goals does it all for you.</p>
+					<p>Curious how it works? <a href="demo.html">Check out the demo page with sample data</a>.</p>
 					<h5>How is my data stored?</h5>
-					<p>All your data is stored locally on your own device; you don&rsquo;t need a login, there&rsquo;s no uploading to the cloud, and your privacy is protected.</p>
+					<p>All your data is stored on your own device; it never gets uploaded to the internet. You don&rsquo;t need a login, and your data is kept private and secure.</p>
 					<p>Please note that if you change browsers (Chrome, Firefox, etc.) or move to a different device, you won&rsquo;t be able to access your data.  This is why we have an <strong>Import/Export</strong> feature allowing you to transfer your data between devices easily with a few clicks.</p>
-					<h5>Feedback and questions</h5>
-					<p><a href="mailto:contact@stephaniecervi.net">Please send us an email with any feedback, questions, feature requests, or general comments</a>.  You can also <a href="https://github.com/sdcervi/DistanceGoals/commits">view the latest changelog on GitHub</a>, as well as <a href="https://github.com/sdcervi/DistanceGoals/issues">browse, add, or comment on issues and in-progress features</a>.</p>
+					<h5>Contact us</h5>
+					<p>For general feedback, questions, feature requests, or general comments, please <a href="mailto:contact@stephaniecervi.net?subject=Distance Goal feedback">send us an email</a>.</p>
+					<p>You can also get in touch via GitHub if you prefer.  Please note that a GitHub account is required for anything other than viewing information.</p>
+					<ul>
+						<li><a href="https://github.com/sdcervi/DistanceGoals/commits">View the latest changelog</a></li>
+						<li><a href="https://github.com/sdcervi/DistanceGoals/issues/new?labels=bug">Report a bug</a></li>
+						<li><a href="https://github.com/sdcervi/DistanceGoals/issues/new?labels=feature+request">Request a feature</a></li>
+						<li><a href="https://github.com/sdcervi/DistanceGoals/issues">Browse, add, or comment on issues and in-progress features</a></li>
+					</ul>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
@@ -325,11 +322,15 @@
 		</div>
 	</div>
 	
+</div>
 </main>
+	
+<footer class="footer mt-auto" id="footer"></footer>
 	
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="js/header-footer.js"></script>
 <script type="text/javascript" src="js/data-handler.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
 <script type="text/javascript" src="js/edit-progress.js"></script>

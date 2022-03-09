@@ -21,8 +21,10 @@ function writeCard () {
 	if (Object.keys(challenges).length === 0) {
 		inProgress.innerHTML += '<p>Add some challenges to get&nbsp;started!</p>';
 		const exportButton = document.getElementById('exportButton');
-		exportButton.setAttribute('disabled', true);
-		exportButton.setAttribute('tab-index', -1);
+		if (exportButton != null) {
+			exportButton.setAttribute('disabled', true);
+			exportButton.setAttribute('tab-index', -1);
+		}
 	}
 	
 	// Tests whether there are any completed challenges, with fallback default text
@@ -126,7 +128,7 @@ function writeCard () {
 			cardContent += '</div></div></div></div>';
 			
 			// Generate the challenge's details
-			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + challenge.progress + " " + challenge.unit + '</p></div>';
+			cardContent += '<div class="race-details"><p><strong>Goal:</strong> ' + challenge.distance + " " + challenge.unit + '</p><p><strong>Progress:</strong> ' + parseFloat(challenge.progress.toFixed(2)) + " " + challenge.unit + '</p></div>';
 			if (Object.keys(challenge.milestones).length > 0) { // If the challenge has milestones (milestones array length > 0)
 				cardContent += '<div class="milestone-progress">';
 				cardContent += '<button class="btn btn-link btn-sm show-hide" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + counter + '" aria-expanded="false" aria-controls="collapse-' + counter + '" id="collapse-button-' + counter + '" onclick="showHide(\'collapse-button-' + counter + '\')">Show milestones</button>';
@@ -148,7 +150,7 @@ function writeCard () {
 						currentStep = Math.max(challenge.progress - previousStep, 0);
 						let nextStep = challenge.milestones[stepCounter].distance - previousStep;
 						cardContent += '<tr><td class="progress-header">' + milestone.name + '</td>';
-						cardContent += '<td class="progress-display"><div><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' + (currentStep / nextStep) * 100 + '%;" aria-valuenow="' + nextStep + '" aria-valuemin="0" aria-valuemax="100">' + currentStep.toFixed(2) + " / " + nextStep + '</div></div></div></td>';
+						cardContent += '<td class="progress-display"><div><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' + (currentStep / nextStep) * 100 + '%;" aria-valuenow="' + nextStep + '" aria-valuemin="0" aria-valuemax="100">' + parseFloat(currentStep.toFixed(2)) + " / " + nextStep + '</div></div></div></td>';
 						cardContent += '</tr>';
 						previousStep = challenge.milestones[stepCounter].distance;
 					}
