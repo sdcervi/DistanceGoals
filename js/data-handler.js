@@ -157,7 +157,13 @@ function addChallenge () {
 			break;
 		}
 	}
-	const period = parseFloat(document.getElementById('challenge-new-period').value); // Convert to number to prevent weird math errors
+	let period;
+	if (parseFloat(document.getElementById('challenge-new-period').value)) {
+		period = parseFloat(document.getElementById('challenge-new-period').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
+	} else if (typeof parseFloat(document.getElementById('challenge-new-period').value) == 'string') {
+		alert ("Error: invalid format for time period. Please enter a number using the digits 0-9.");
+		return;
+	}
 	const periodUnit = document.getElementById('challenge-new-period-unit').value;
 	const start = document.getElementById('challenge-new-start').value;
 	const hasMilestones = document.getElementById('hasMilestones').checked;
