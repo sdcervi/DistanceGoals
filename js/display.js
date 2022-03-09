@@ -19,7 +19,7 @@ function writeCard () {
 	
 	// If the challenges object is empty (length of keys array is 0), add default text instead
 	if (Object.keys(challenges).length === 0) {
-		inProgress.innerHTML += '<p>Add some challenges to get started!</p>';
+		inProgress.innerHTML += '<p>Add some challenges to get&nbsp;started!</p>';
 		const exportButton = document.getElementById('exportButton');
 		exportButton.setAttribute('disabled', true);
 		exportButton.setAttribute('tab-index', -1);
@@ -33,7 +33,7 @@ function writeCard () {
 		}
 	}
 	if (anyCompleted == false) {
-		complete.innerHTML += '<p>Looks like you haven&rsquo;t completed any challenges yet.</p>';
+		complete.innerHTML += '<p>Looks like you haven&rsquo;t completed any challenges&nbsp;yet.</p>';
 	}
 	
 	// For all challenges within the challenges container object, generate the challenge's card

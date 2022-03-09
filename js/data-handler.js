@@ -45,9 +45,13 @@ function importFile (event) {
 		let reader = new FileReader(); // Create a new reader object
 		reader.onload = (function(theFile) { // When the reader is invoked
 			return function(e) {
+				if (e.target.result.charAt(0) != '\{') {
+					alert ('File validation error: incorrect file contents');
+					return;
+				}
 				challenges = JSON.parse(e.target.result); // Parse the JSON and load that into our challenges object
 				if (Object.keys(challenges).length === 0) { // Check to see if there is usable data in that object
-					alert ('File validation error: empty file.');
+					alert ('File validation error: empty file');
 				} else {
 					for (const counter in challenges) {
 						const challenge = challenges[counter];
