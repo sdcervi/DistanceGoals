@@ -55,48 +55,6 @@
 		
 	</section>
 	
-	<!-- Edit progress modal -->
-	<!--div class="modal fade" id="editProgressModal" tabindex="-1" aria-labelledby="editProgressModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="editProgressModalLabel">Enter new progress amount</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-
-					<form>
-						<div class="mb-3 row">
-							<label for="challenge-name" class="col-form-label">Challenge:</label>
-							<div><input type="text" class="form-control col-10" name="challenge-name" id="challenge-edit-name" readonly /></div>
-						</div>
-						<div class="mb-3 row">
-							<label for="enter-distance" class="col-form-label">Set progress to:</label>
-							<div><input type="text" class="form-control col-10" name="enter-distance" id="enter-distance" /></div>
-						</div>
-						<div class="row">
-							<label class="col-2 col-form-label">Unit:</label>
-							<div class="col-10">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="distance" value="miles" id="editMiles" checked>
-									<label class="form-check-label" for="editMiles">miles</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="distance" value="kilometers" id="editKilometers">
-									<label class="form-check-label" for="editKilometers">kilometers</label>
-								</div>
-							</div>
-						</div>
-					</form>
-
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" id="edit-progress-button" onclick="editProgress()" data-bs-dismiss="modal">Submit</button>
-				</div>
-			</div>
-		</div>
-	</div-->
-	
 	<!-- Add progress modal -->
 	<div class="modal fade" id="addProgressModal" tabindex="-1" aria-labelledby="addProgressModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -149,7 +107,7 @@
 				</div>
 				<div class="modal-body">
 
-					<form>
+					<form method="post">
 						<div class="mb-3 row">
 							<label for="challenge-name" class="col-form-label">Challenge name:<span class="form-required"> *</span></label>
 							<div><input type="text" class="form-control" name="challenge-name" id="challenge-edit-name" required /></div>
@@ -213,7 +171,7 @@
 							<div class="mb-3 row" id="milestones-edit-container"></div>
 						</div>
 						<p class="mb-0 mt-4 small float-end"><span class="form-required">* Required</span></p>
-						<button type="button" class="btn btn-primary mt-3" id="new-challenge-button" onclick="editChallenge()">Submit</button>
+						<button type="submit" class="btn btn-primary mt-3" id="edit-challenge-button" onclick="editChallenge()">Submit</button>
 					</form>
 
 				</div>
@@ -231,7 +189,7 @@
 				</div>
 				<div class="modal-body">
 
-					<form>
+					<form method="post">
 						<div class="mb-3 row">
 							<label for="challenge-name" class="col-form-label">Challenge name:<span class="form-required"> *</span></label>
 							<div><input type="text" class="form-control" name="challenge-name" id="challenge-new-name" required /></div>
@@ -321,9 +279,9 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<p>Distance Goals is a web app designed to help people track progress toward goals for virtual or real-world distance challenges. Some challenge hosts have no way to sync with fitness tracking apps, or their own usable tracking system.</p>
+					<p>Distance Goals is designed to help you track progress toward goals for virtual or real-world distance challenges. Some challenge hosts have no way to sync with fitness tracking apps, or their own usable tracking system.</p>
 					<p>Don&rsquo;t waste time fiddling with spreadsheets or doing math by hand in a notebook; Distance Goals does it all for you.</p>
-					<p>Curious how it works? <a href="demo.html">Check out the demo page with sample data</a>.</p>
+					<p>Curious how it works? Click the <strong>Demo</strong> button in the top menu to load sample data.</p>
 					<h5>How is my data stored?</h5>
 					<p>All your data is stored on your own device; it never gets uploaded to the internet. You don&rsquo;t need a login, and your data is kept private and secure.</p>
 					<p>Please note that if you change browsers (Chrome, Firefox, etc.) or move to a different device, you won&rsquo;t be able to access your data.  This is why we have an <strong>Import/Export</strong> feature allowing you to transfer your data between devices easily with a few clicks.</p>
@@ -344,12 +302,34 @@
 		</div>
 	</div>
 	
+	<!-- First visit modal -->
+	<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title welcome" id="welcomeModalLabel"><img src="assets/logo/logo.svg" alt="" class="logo"/>&nbsp;Distance Goals</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body welcome">
+					<h5>Welcome!</h5>
+					<p>Distance Goals is a web app designed to help you track progress toward goals for virtual or real-world distance challenges.</p>
+					<p>Don&rsquo;t waste time fiddling with spreadsheets or doing math by hand in a notebook; Distance Goals does it all for you.</p>
+					<p>Curious how it works? Click <button class="btn btn-sm btn-primary mx-1">Demo</button> in the top menu to load sample data.</p>
+					<p>Click <button class="btn btn-sm btn-primary mx-1">About</button> in the top menu for more information.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Let&rsquo;s get started</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<!-- Comfirm clear data modal -->
 	<div class="modal fade" id="clearModal" tabindex="-1" aria-labelledby="clearModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="clearModalLabel">Please confirm deleting your data</h4>
+					<h4 class="modal-title" id="clearModalLabel">Please confirm</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -369,7 +349,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="resetModalLabel">Please confirm resetting to demo data</h4>
+					<h4 class="modal-title" id="resetModalLabel">Please confirm</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -416,9 +396,12 @@
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="js/header-footer.js"></script>
+<script type="text/javascript" src="js/helpers.js"></script>
+<script type="text/javascript" src="js/first-visit.js"></script>
 <script type="text/javascript" src="js/data-handler.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
 <script type="text/javascript" src="js/edit-progress.js"></script>
+<script type="text/javascript" src="js/sample-data.js"></script>
 
 </body>
 </html>

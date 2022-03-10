@@ -95,9 +95,6 @@ const sampleData = {
 
 // Resets all data to the sample data object defined above, regenerates page content, and saves sample data into localStorage
 function resetData () {
-	inProgress.innerHTML = "";
-	complete.innerHTML = "";
 	challenges = sampleData;
-	writeCard();
-	saveChanges();
+	resetPage();
 }

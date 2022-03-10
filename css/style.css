@@ -17,10 +17,15 @@ footer p { text-align: center; font-size: 0.75em; color: #6c757d; }
 .navbar .nav-buttons button { color: white; background-color: #0099cc; border-color: #0099cc; }
 .navbar .nav-buttons button:focus, .navbar .nav-buttons button:hover { background-color: #33b5e5; border-color: #33b5e5; }
 .navbar .nav-buttons button:active { background-color: #2bbbad; border-color: #2bbbad; }
-.navbar .nav-buttons button.active { background-color: #00a743; border-color: #00a743; }
 .navbar#secondary-nav img.icon-white { margin-right: 0.5em; }
 
 /* -------------------------------- COMPONENT STYLES --------------------------------- */
+.welcome h4 { font-size: 2em; color: #000060; }
+.welcome img { height: 1.5em; width: 1.5em; position: relative; bottom: 0.1em; left: 0.15em; }
+.welcome button { color: white; background-color: #0099cc; border-color: #0099cc; }
+.welcome button:focus, .welcome button:hover { background-color: #33b5e5; border-color: #33b5e5; }
+.welcome button:active { background-color: #2bbbad; border-color: #2bbbad; }
+
 button.progress-edit { float: right; background-color: #004d40; border-color: #004d40; margin-left: 0.5em; }
 button.progress-edit:first-of-type { margin-right: -0.6em; }
 button.progress-edit:focus, button.progress-edit:hover { background-color: #00715E; border-color: #00715E; }

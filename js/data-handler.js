@@ -1,31 +1,45 @@
+/* Contains helper functions that other larger functions call
+
+CONTENTS:
+	1. Global variable for challenges object, initialized to empty, then filled with localStorage data if it exists
+	2. deleteChallengeModal		Variables and function to delete a challenge
+	3. saveChanges ()			Saves the challenges object into localStorage
+	4. exportFile ()			Exports localStorage to file and downloads it to the user's device
+	5. importFile ()			Imports data from a user-uploaded file and validates the contents
+	6. deleteData ()			Deletes all distance tracker user data from localStorage
+	7. addMilestone ()			Adds a row for a new milestone when creating a new challenge
+	8. deleteMilestone ()		Deletes a milestone row, by unique ID passed from the row's delete button
+	9. addChallenge ()			Add a new challenge to the challenges object
+*/
+
+
 let challenges = {}; // Initialize challenges object to empty
 
-// If localData contains a challenges object, copy that data into our challenges object
+// If localStorage contains a challenges object, copy that data into our challenges object
 if (JSON.parse(window.localStorage.getItem('distanceTracker'))) {
 	challenges = JSON.parse(window.localStorage.getItem('distanceTracker'));
 }
 
 // Deletes a challenge based on ID passed by the button that opens the modal, after confirming deletion via modal
 const deleteChallengeModal = document.getElementById('deleteChallengeModal');
-let deleteChallengeID = "";
+let deleteChallengeID = '';
 deleteChallengeModal.addEventListener('show.bs.modal', function (event) {
 	const button = event.relatedTarget;
 	deleteChallengeID = button.getAttribute('data-bs-challenge');
 	const modalBodyInput = deleteChallengeModal.querySelector('.modal-body #challenge-delete-name');
-	modalBodyInput.value = challenges[deleteChallengeID].name.replace(/&amp;/g, "&");
+	modalBodyInput.value = challenges[deleteChallengeID].name.replace(/&amp;/g, '&');
 });
 function deleteChallenge () {
 	delete challenges[deleteChallengeID];
-	saveChanges();
-	location.reload();
+	resetPage ();
 }
 
-// Saves our challenges object into localData
+// Saves the challenges object into localStorage
 function saveChanges () {
 	window.localStorage.setItem('distanceTracker', JSON.stringify(challenges));
 }
 
-// Exports localData to file and downloads it to the user's device
+// Exports localStorage to file and downloads it to the user's device
 function exportFile () {
 	let fileOutput = document.createElement("a"); // Creates a link element to download the file
 	fileOutput.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(challenges))); // Sets link target to JSON string from challenges object
@@ -40,8 +54,9 @@ function exportFile () {
 function importFile (event) {
 	let userUpload = event.target.files; // When a user uploads a file
 	let file = userUpload[0]; // Get the data from the first item in the array
+	
 	// Validate file name, file size, and file type
-	if (file.name === 'distance-tracker-data-export.txt' && file.size < 5000 && file.size > 0 && file.type === 'text/plain') { 
+	if (file.name === 'distance-tracker-data-export.txt' && file.size < 5000 && file.size > 50 && file.type === 'text/plain') { 
 		let reader = new FileReader(); // Create a new reader object
 		reader.onload = (function(theFile) { // When the reader is invoked
 			return function(e) {
@@ -49,58 +64,17 @@ function importFile (event) {
 					alert ('File validation error: incorrect file contents');
 					return;
 				}
-				challenges = JSON.parse(e.target.result); // Parse the JSON and load that into our challenges object
-				if (Object.keys(challenges).length === 0) { // Check to see if there is usable data in that object
+				let userData = JSON.parse(e.target.result); // Parse the JSON and load that into a temporary holding object
+				if (Object.keys(userData).length === 0) { // Check to see if there is usable data in that object
 					alert ('File validation error: empty file');
 				} else {
-					for (const counter in challenges) {
-						const challenge = challenges[counter];
-						
-						// Validate that all values for each key have the correct data type
-						if (typeof challenge.name != 'string') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.name + ' is not a string');
-							break;
-						}
-						if (typeof challenge.company != 'string') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.company + ' is not a string');
-							break;
-						} 
-						if (typeof parseFloat(challenge.distance) != 'number') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.distance + ' is not a number');
-							break;
-						} 
-						if (typeof challenge.unit != 'string') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.unit + ' is not a string');
-							break;
-						} 
-						if (typeof challenge.period != 'boolean' && typeof parseFloat(challenge.period) != 'number') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.period + ' is not a number or boolean');
-							break;
-						} 
-						if (typeof challenge.start != 'string') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.start + ' is not a string');
-							break;
-						} 
-						if (typeof parseFloat(challenge.progress) != 'number') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.progress + ' is not a number');
-							break;
-						}
-						if (typeof challenge.complete != 'boolean' && typeof challenge.complete != 'string') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.complete + ' is not a string or boolean');
-							break;
-						}
-						if (typeof challenge.milestones != 'object') {
-							alert ('File validation error: invalid data in ' + challenge.name + '\r\n' + challenge.milestones + ' is not an object');
-							break;
-						}
-					}
-					window.localStorage.setItem('distanceTracker', e.target.result); // Load contents of file into localStorage object
+					validateUpload(userData);
 				}
 			};
 		})(file); // Pass the user-uploaded file into the anonymous function
 		reader.readAsText(file); // Invoke reader on the user-uploaded file
 	} else if (file.name != 'distance-tracker-data-export.txt') {
-		alert ('File validation error: name incorrect.');
+		alert ('File validation error: file name incorrect.');
 	} else if (file.size == 0) {
 		alert ('File validation error: file too small');
 	} else if (file.size > 5000) {
@@ -113,16 +87,14 @@ function importFile (event) {
 }
 document.getElementById('uploadFile').addEventListener('change', importFile, false); // Event handler to trigger upload once user selects a file with the browser
 
-//Deletes all distance tracker user data from localStorage
+// Deletes all distance tracker user data from localStorage
 function deleteData () {
 	window.localStorage.removeItem('distanceTracker'); // Removes distanceTracker from localStorage
 	challenges = {}; // Sets challenges object to empty
-	inProgress.innerHTML = ""; // Clears page contents
-	complete.innerHTML = ""; // Clears page contents
-	writeCard(); // Rewrites page contents
-	saveChanges(); // Saves challenges to localStorage
+	resetPage ();
 }
 
+// Adds a row for a new milestone when creating a new challenge
 let milestoneCounter = 0; // Counter for number of milestones added, so that they each have a unique ID
 function addMilestone (container) {
 	const milestonesDiv = document.getElementById(container); // Variable to put milestone content into
@@ -146,13 +118,17 @@ function deleteMilestone (milestoneID) {
 function addChallenge () {
 	// Grab all values from the add new challenge modal's form
 	const name = document.getElementById('challenge-new-name').value;
-	const challengeID = name.toLowerCase().replace(/ /g,"_").replace(/-/g, "_");
+	let challengeID = name.toLowerCase().replace(/ /g,'_').replace(/-/g, '_');
+	if (!isNaN(challengeID.charAt(0))) {
+		challengeID = 'dg_' + challengeID;
+	}
+	
 	const company = document.getElementById('challenge-new-company').value;
 	let distance;
 	if (parseFloat(document.getElementById('enter-distance-new').value)) {
 		distance = parseFloat(document.getElementById('enter-distance-new').value); // Convert to number; will discard any non-numeric values
 	} else if (typeof document.getElementById('enter-distance-new').value == 'string') {
-		alert ("Error: invalid format for distance. Please enter a number using the digits 0-9. Decimal places are allowed.");
+		alert ('Error: invalid format for distance. Please enter a number using the digits 0-9. Decimal places are allowed.');
 		return;
 	}
 	const unitList = document.querySelectorAll('input[name="distance-new"]');
@@ -164,10 +140,10 @@ function addChallenge () {
 		}
 	}
 	let period;
-	if (parseFloat(document.getElementById('challenge-new-period').value) || document.getElementById('challenge-new-period').value == "") {
+	if (parseFloat(document.getElementById('challenge-new-period').value) || document.getElementById('challenge-new-period').value == '') {
 		period = parseFloat(document.getElementById('challenge-new-period').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
 	} else {
-		alert ("Error: invalid format for time period. Please enter a whole number without a decimal point using the digits 0-9.");
+		alert ('Error: invalid format for time period. Please enter a whole number without a decimal point using the digits 0-9.');
 		return;
 	}
 	const periodUnit = document.getElementById('challenge-new-period-unit').value;
@@ -187,24 +163,24 @@ function addChallenge () {
 		} else if (periodUnit == 'year') {
 			endDate.setYear(endDate.getFullYear() + period);
 		} else {
-			alert ("Error with date format entry");
+			alert ('Error with date format entry');
 		}
 		duration = endDate.getTime() - startDate.getTime(); // Get difference between end time and start time, in milliseconds 
 		duration = Math.floor(duration / (1000 * 3600 * 24)); // Convert millisecond duration into days (1000ms/s, 3600s/hr, 24hr/day) and round down
 	}
 	
 	let milestonesArray = []; // Initialize milestones array to be empty
-	if (milestones.innerHTML !== "" && hasMilestones) { // Only if the user entered content (milestones div is not empty), AND the milestones checkbox is checked
+	if (milestones.innerHTML !== '' && hasMilestones) { // Only if the user entered content (milestones div is not empty), AND the milestones checkbox is checked
 		for (let counter = 0; counter < milestones.children.length; counter++) { // Iterate through using a counter since milestone unique IDs may skip a number
 			// Get the milestone's name and distance
 			let milestoneID = milestones.children[counter].id; // Get HTML element's unique ID
-			let milestoneName = document.getElementById(milestoneID + "-name").value; // Get the name of the milestone
+			let milestoneName = document.getElementById(milestoneID + '-name').value; // Get the name of the milestone
 			// Get distance of milestone, validated as a number
 			let milestoneDistance;
-			if (parseFloat(document.getElementById(milestoneID + "-distance").value)) {
-				milestoneDistance = parseFloat(document.getElementById(milestoneID + "-distance").value); // Convert to number; will discard any non-numeric values
-			} else if (typeof document.getElementById(milestoneID + "-distance").value == 'string') {
-				alert ("Error: invalid format for milestone distance. Please enter a number using the digits 0-9. Decimal places are allowed.");
+			if (parseFloat(document.getElementById(milestoneID + '-distance').value)) {
+				milestoneDistance = parseFloat(document.getElementById(milestoneID + '-distance').value); // Convert to number; will discard any non-numeric values
+			} else if (typeof document.getElementById(milestoneID + '-distance').value == 'string') {
+				alert ('Error: invalid format for milestone distance. Please enter a number using the digits 0-9. Decimal places are allowed.');
 				return;
 			}
 			milestonesArray.push({ name: milestoneName.replace(/ /g, '\u00a0'), distance : milestoneDistance }); // Push new object into array with any spaces in name converted to &nbsp;
@@ -225,6 +201,6 @@ function addChallenge () {
 		challenges[challengeID].milestones = milestonesArray;
 		saveChanges();
 	} else { // If a challenge with this unique ID already exists, throw an error
-		alert ("Error: challenge already exists");
+		alert ('Error: challenge already exists');
 	}
 }

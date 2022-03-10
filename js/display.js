@@ -1,18 +1,4 @@
-// Set variables to put JS-generated HTML cards into
-const inProgress = document.getElementById("in-progress");
-const complete = document.getElementById("complete");
-
-// Toggles show/hide text in button for showing/hiding milestones
-function showHide (button) {
-	button = document.getElementById(button);
-	if (button.innerHTML == "Show milestones") {
-		button.innerHTML = "Hide milestones";
-	} else if (button.innerHTML == "Hide milestones") {
-		button.innerHTML = "Show milestones";
-	} else {
-		alert ("Error in milestones show/hide function");
-	}
-}
+/* Contains the function that generates the page's content in cards from the challenges object */
 
 // Generates each challenge's card from data stored in localStorage object, and writes it to the page
 function writeCard () {
@@ -41,6 +27,7 @@ function writeCard () {
 	// For all challenges within the challenges container object, generate the challenge's card
 	for (const counter in challenges) {
 		
+		// Pull challenge data into variable for easy access
 		const challenge = challenges[counter];
 		
 		// If a challenge's progress is 100% or greater to indicate being complete, and the challenge is not marked complete, set completion date to today (which will evaluate to true)
@@ -56,8 +43,7 @@ function writeCard () {
 			const startDate = new Date (challenge.start);
 			let endDate = new Date (challenge.start);
 			endDate.setDate(endDate.getDate() + challenge.period);
-			let timeSoFar = today.getTime() - startDate.getTime(); // Get difference between today and start time, in milliseconds
-			timeSoFar = Math.floor(timeSoFar / (1000 * 3600 * 24)); // Convert millisecond duration into days (1000ms/s, 3600s/hr, 24hr/day) and round down
+			let timeSoFar = getDuration(startDate.getTime(), today.getTime()); // Get difference in days between start time and today
 			
 			let progress = Math.floor((challenge.progress / challenge.distance) * 100); // Calculate progress toward goal in percentage and round down
 			
@@ -90,7 +76,7 @@ function writeCard () {
 				let currentStep = 0; // Holder variable for current step's distance
 				let stepSize = 0; // Difference between current step and previous step
 				for (const step in challenge.milestones) { // For each milestone in the array
-					const milestone = challenge.milestones[step];
+					const milestone = challenge.milestones[step]; // Pull milestone challenge into variable for easy access
 					// If the challenge's overall progress is greater than the distance for this milestone, make this milestone's segment full
 					if (challenge.progress > milestone.distance) {
 						currentStep = milestone.distance;
