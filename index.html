@@ -262,6 +262,10 @@
 				<div class="modal-body">
 					<p>Please select your exported data file:</p>
 					<input class="form-control col" type="file" id="uploadFile" accept="text/plain" name="files[]">
+					<p class="text-center small"><a data-bs-toggle="collapse" href="#ios-chrome-alert" role="button" aria-expanded="false" aria-controls="ios-chrome-alert">Note for Chrome users on iPhone and iPad</a></p>
+					<div class="collapse alert alert-warning" role="alert" id="ios-chrome-alert">
+						<p class="small"><a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1252380">Due to a bug</a>, you can only download files with the default name <code>download</code>.  You will need to rename your exported file to <code>distance-tracker-data-export.txt</code> to successfully import it.</p>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary" id="upload-file-button" data-bs-dismiss="modal" onclick="location.reload();">Submit</button>

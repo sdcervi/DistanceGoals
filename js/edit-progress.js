@@ -47,7 +47,7 @@ editChallengeModal.addEventListener('show.bs.modal', function (event) {
 			unit.checked = false;
 		}
 	}
-	editProgress.value = challenge.progress;
+	editProgress.value = parseFloat(challenge.progress.toFixed(2));
 	if (challenge.complete) { // Check completed box if challenge is completed
 		editComplete.checked = true;
 	}
