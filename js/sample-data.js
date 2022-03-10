@@ -1,6 +1,6 @@
 const sampleData = {
-	zodiac: {
-		name:			"600 Mile Zodiac Challenge",
+	zodiac_challenge: {
+		name:			"Zodiac Challenge",
 		company:		"Medal Chasers",
 		distance:		600,
 		unit:			"miles",
@@ -33,7 +33,7 @@ const sampleData = {
 		complete:		false,
 		milestones:		[]
 	},
-	dragon: {
+	unleash_the_dragon_within: {
 		name:			"Unleash the Dragon Within",
 		company:		"Medal Chasers",
 		distance:		5,
@@ -44,7 +44,7 @@ const sampleData = {
 		complete:		false,
 		milestones:		[]
 	},
-	ring: {
+	one_run_to_rule_them_all: {
 		name:			"One Run to Rule Them All",
 		company:		"Medal Chasers",
 		distance:		5,
@@ -74,7 +74,7 @@ const sampleData = {
 			{	name:	"Uranus",	distance:	340		},
 			{	name:	"Neptune",	distance:	400		}]
 	},
-	dino_might: {
+	dino_might_challenge: {
 		name:			"Dino-Might Challenge",
 		company:		"Virtual Running Club",
 		distance:		100,

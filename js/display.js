@@ -63,9 +63,9 @@ function writeCard () {
 			
 			// Generate the card header, containing the challenge name and add/edit/delete buttons
 			let cardContent = '<article class="col" id="' + counter +'"><div class="card race-card"><div class="card-header race-name">';
-			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#deleteChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/clear-icon.svg" alt="Delete" class="icon-white" /></button>'; // Add progress button
-			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#editProgressModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" /></button>'; // Edit button
-			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#addProgressModal" data-bs-challenge="' + counter + '"><img src="assets/add-icon.svg" alt="Edit" class="icon-white" /></button>'; // Delete button
+			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#deleteChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/clear-icon.svg" alt="Delete" class="icon-white" /></button>'; // Delete button
+			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#editChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" /></button>'; // Edit button
+			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#addProgressModal" data-bs-challenge="' + counter + '"><img src="assets/add-icon.svg" alt="Edit" class="icon-white" /></button>'; // Add progress button
 			cardContent += '<h3>' + challenge.name + '</h3></div>'; // Challenge name
 			
 			// If the challenge has a period specified, add it to the right of the challenge company name
@@ -168,7 +168,10 @@ function writeCard () {
 			
 			// Generate the card header, containing the challenge name
 			let cardContent = '<article class="col"><div class="card race-card">';
-			cardContent += '<div class="card-header race-name"><h3>' + challenge.name + '</h3></div>';
+			cardContent += '<div class="card-header race-name">';
+			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#deleteChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/clear-icon.svg" alt="Delete" class="icon-white" /></button>'; // Delete button
+			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#editChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" /></button>'; // Edit button
+			cardContent += '<h3>' + challenge.name + '</h3></div>';
 			
 			// Generate completion date and add it to the right of the company name
 			cardContent += '<div class="card-body">';

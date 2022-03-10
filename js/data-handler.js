@@ -124,14 +124,14 @@ function deleteData () {
 }
 
 let milestoneCounter = 0; // Counter for number of milestones added, so that they each have a unique ID
-function addMilestone () {
-	const milestonesDiv = document.getElementById('milestones-container'); // Variable to put milestone content into
+function addMilestone (container) {
+	const milestonesDiv = document.getElementById(container); // Variable to put milestone content into
 	let milestonesContent = '<div class="row mb-3" id="milestone' + milestoneCounter + '">';
 	
 	// Create new milestone row with unique ID
-	milestonesContent += '<div class="col-8"><input type="text" class="form-control" name="milestone' + milestoneCounter + '-name" id="milestone' + milestoneCounter + '-name" placeholder="Milsetone name" /></div>';
-	milestonesContent += '<div class="col-3"><input type="text" class="form-control" name="milestone' + milestoneCounter + '-distance" id="milestone' + milestoneCounter + '-distance" placeholder="Distance" /></div>';
-	milestonesContent += '<div class="col-1"><button class="btn btn-secondary btn-sm m-1" type="button" onclick="deleteMilestone(\'milestone' + milestoneCounter + '\')"><img src="assets/clear-icon.svg" alt="Remove milestone" class="icon-white" /></button></div></div>'; // Creates button to delete, with matching unique ID
+	milestonesContent += '<div class="col-6"><input type="text" class="form-control" name="milestone' + milestoneCounter + '-name" id="milestone' + milestoneCounter + '-name" placeholder="Milsetone name" /></div>';
+	milestonesContent += '<div class="col-5"><input type="number" class="form-control" name="milestone' + milestoneCounter + '-distance" id="milestone' + milestoneCounter + '-distance" placeholder="Distance" /></div>';
+	milestonesContent += '<div class="col-1"><button class="btn btn-link btn-sm m-1" type="button" onclick="deleteMilestone(\'milestone' + milestoneCounter + '\')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></div></div>'; // Creates button to delete, with matching unique ID
 	milestonesDiv.insertAdjacentHTML('beforeend', milestonesContent); // Adds the new row, without overwriting div contents like with innerHTML
 	milestoneCounter++;
 }
@@ -146,7 +146,7 @@ function deleteMilestone (milestoneID) {
 function addChallenge () {
 	// Grab all values from the add new challenge modal's form
 	const name = document.getElementById('challenge-new-name').value;
-	const challengeID = name.toLowerCase().replace(/ /g,"_");
+	const challengeID = name.toLowerCase().replace(/ /g,"_").replace(/-/g, "_");
 	const company = document.getElementById('challenge-new-company').value;
 	let distance;
 	if (parseFloat(document.getElementById('enter-distance-new').value)) {
@@ -164,7 +164,7 @@ function addChallenge () {
 		}
 	}
 	let period;
-	if (parseFloat(document.getElementById('challenge-new-period').value)) {
+	if (parseFloat(document.getElementById('challenge-new-period').value) || document.getElementById('challenge-new-period').value == "") {
 		period = parseFloat(document.getElementById('challenge-new-period').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
 	} else {
 		alert ("Error: invalid format for time period. Please enter a whole number without a decimal point using the digits 0-9.");
@@ -199,7 +199,14 @@ function addChallenge () {
 			// Get the milestone's name and distance
 			let milestoneID = milestones.children[counter].id; // Get HTML element's unique ID
 			let milestoneName = document.getElementById(milestoneID + "-name").value; // Get the name of the milestone
-			let milestoneDistance = parseFloat(document.getElementById(milestoneID + "-distance").value); // Get the distance value as a number
+			// Get distance of milestone, validated as a number
+			let milestoneDistance;
+			if (parseFloat(document.getElementById(milestoneID + "-distance").value)) {
+				milestoneDistance = parseFloat(document.getElementById(milestoneID + "-distance").value); // Convert to number; will discard any non-numeric values
+			} else if (typeof document.getElementById(milestoneID + "-distance").value == 'string') {
+				alert ("Error: invalid format for milestone distance. Please enter a number using the digits 0-9. Decimal places are allowed.");
+				return;
+			}
 			milestonesArray.push({ name: milestoneName.replace(/ /g, '\u00a0'), distance : milestoneDistance }); // Push new object into array with any spaces in name converted to &nbsp;
 		}
 	}
