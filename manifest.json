@@ -3,8 +3,8 @@
 	"name":			"Distance Goal Tracker",
 	"icons": [
 		{
-			"src":		"/assets/android-chrome-192x192.png",
-			"sizes":	"192x192",
+			"src":		"/assets/favicon/apple-touch-icon.png",
+			"sizes":	"180x180",
 			"type":		"image/png"
 		}
 	],

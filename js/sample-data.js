@@ -97,4 +97,5 @@ const sampleData = {
 function resetData () {
 	challenges = sampleData;
 	resetPage();
+	location.reload(true);
 }

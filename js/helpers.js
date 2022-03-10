@@ -18,7 +18,7 @@ function resetPage () {
 	inProgress.innerHTML = '';
 	complete.innerHTML = '';
 	saveChanges();
-	location.reload;
+	location.reload();
 	writeCard();
 }
 
