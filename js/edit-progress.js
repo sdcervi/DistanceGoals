@@ -110,12 +110,15 @@ function addProgress () {
 	}
 	
 	// Convert distance if needed
-	if (selectedUnit == 'miles' && challenge.unit == 'kilometers') {
+	if (selectedUnit == challenge.unit) {
+		distance *= 1;
+	} else if (selectedUnit == 'miles' && challenge.unit == 'kilometers') {
 		distance *= 1.60934;
 	} else if (selectedUnit == 'kilometers' && challenge.unit == 'miles') {
 		distance += 0.621371;
 	} else {
 		alert ('Unit conversion error.');
+		return;
 	}
 	
 	// Make sure that it won't make the challenge's progress negative
