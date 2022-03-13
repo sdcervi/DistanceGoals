@@ -109,15 +109,20 @@ function addProgress () {
 		}
 	}
 	
-	// Make sure that the data is entered in the correct unit, by converting it if necessary
-	if (selectedUnit == challenge.unit) {
-		challenge.progress += distance;
-	} else if (selectedUnit == 'miles' && challenge.unit == 'kilometers') {
-		challenge.progress += distance * 1.60934;
+	// Convert distance if needed
+	if (selectedUnit == 'miles' && challenge.unit == 'kilometers') {
+		distance *= 1.60934;
 	} else if (selectedUnit == 'kilometers' && challenge.unit == 'miles') {
-		challenge.progress += distance * 0.621371;
+		distance += 0.621371;
 	} else {
 		alert ('Unit conversion error.');
+	}
+	
+	// Make sure that it won't make the challenge's progress negative
+	if (distance < 0 && challenge.progress + distance < 0) {
+		challenge.progress = 0;
+	} else {
+		challenge.progress += distance;
 	}
 	
 	// Reset page contents, regenerate challenge cards, and save the updated data to localStorage

@@ -20,6 +20,16 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 	<link rel="mainfest" href="manifest.json">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5GBYXCKF32"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-5GBYXCKF32');
+	</script>
 </head>
 	
 <body class="d-flex flex-column h-100">
@@ -107,7 +117,7 @@
 				</div>
 				<div class="modal-body">
 
-					<form method="post">
+					<form>
 						<div class="mb-3 row">
 							<label for="challenge-name" class="col-form-label">Challenge name:<span class="form-required"> *</span></label>
 							<div><input type="text" class="form-control" name="challenge-name" id="challenge-edit-name" required /></div>
@@ -189,7 +199,7 @@
 				</div>
 				<div class="modal-body">
 
-					<form method="post">
+					<form>
 						<div class="mb-3 row">
 							<label for="challenge-name" class="col-form-label">Challenge name:<span class="form-required"> *</span></label>
 							<div><input type="text" class="form-control" name="challenge-name" id="challenge-new-name" required /></div>
@@ -262,6 +272,10 @@
 				<div class="modal-body">
 					<p>Please select your exported data file:</p>
 					<input class="form-control col" type="file" id="uploadFile" accept="text/plain" name="files[]">
+					<p class="text-center small"><a data-bs-toggle="collapse" href="#ios-chrome-alert" role="button" aria-expanded="false" aria-controls="ios-chrome-alert">Note for Chrome users on iPhone and iPad</a></p>
+					<div class="collapse alert alert-warning" role="alert" id="ios-chrome-alert">
+						<p class="small"><a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1252380">Due to a bug</a>, you can only download files with the default name <code>download</code>.  You will need to rename your exported file to <code>distance-tracker-data-export.txt</code> to successfully import it.</p>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary" id="upload-file-button" data-bs-dismiss="modal" onclick="location.reload();">Submit</button>
@@ -279,7 +293,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<p>Distance Goals is a web app designed to help people track progress toward goals for virtual or real-world distance challenges. Some challenge hosts have no way to sync with fitness tracking apps, or their own usable tracking system.</p>
+					<p>Distance Goals is designed to help you track progress toward goals for virtual or real-world distance challenges. Some challenge hosts have no way to sync with fitness tracking apps, or their own usable tracking system.</p>
 					<p>Don&rsquo;t waste time fiddling with spreadsheets or doing math by hand in a notebook; Distance Goals does it all for you.</p>
 					<p>Curious how it works? Click the <strong>Demo</strong> button in the top menu to load sample data.</p>
 					<h5>How is my data stored?</h5>
@@ -297,6 +311,29 @@
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- First visit modal -->
+	<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title welcome" id="welcomeModalLabel"><img src="assets/logo/logo.svg" alt="" class="logo"/>&nbsp;Distance Goals</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body welcome">
+					<h5>Welcome!</h5>
+					<p>Distance Goals is a web app designed to help you track progress toward goals for virtual or real-world distance challenges.</p>
+					<p>Don&rsquo;t waste time fiddling with spreadsheets or doing math by hand in a notebook; Distance Goals does it all for you.</p>
+					<p>Curious how it works? Click <button class="btn btn-sm btn-primary mx-1">Demo</button> in the top menu to load sample data.</p>
+					<p>Click <button class="btn btn-sm btn-primary mx-1">About</button> in the top menu for more information.</p>
+					<p><strong>Please note that this is still in beta.</strong> There may be bugs or glitches.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Let&rsquo;s get started</button>
 				</div>
 			</div>
 		</div>
@@ -373,8 +410,32 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery.slim.min.js"><\/script>')</script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyByI6aimfmPoa3znYehzth03SmJP6iilrY",
+    authDomain: "distance-goals.firebaseapp.com",
+    projectId: "distance-goals",
+    storageBucket: "distance-goals.appspot.com",
+    messagingSenderId: "909928312422",
+    appId: "1:909928312422:web:57871d6972f46440d0c7a7",
+    measurementId: "G-3C0V6TGT03"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <script type="text/javascript" src="js/header-footer.js"></script>
 <script type="text/javascript" src="js/helpers.js"></script>
+<script type="text/javascript" src="js/first-visit.js"></script>
 <script type="text/javascript" src="js/data-handler.js"></script>
 <script type="text/javascript" src="js/display.js"></script>
 <script type="text/javascript" src="js/edit-progress.js"></script>
