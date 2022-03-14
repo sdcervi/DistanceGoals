@@ -142,8 +142,11 @@ function editChallenge () {
 	// Get the rest of the data
 	const company = document.getElementById('challenge-edit-company').value
 	let distance;
-	if (parseFloat(document.getElementById('challenge-edit-distance').value)) {
+	if (parseFloat(document.getElementById('challenge-edit-distance').value) > 0) {
 		distance = parseFloat(document.getElementById('challenge-edit-distance').value); // Convert to number; will discard any non-numeric values
+	} else if (parseFloat(document.getElementById('challenge-edit-distance').value) <= 0) {
+		alert ('Error: invalid distance. Please enter a number greater than 0.');
+		distance = challenge.distance;
 	} else if (typeof document.getElementById('challenge-edit-distance').value == 'string') {
 		alert ('Error: invalid format for distance. Please enter a number using the digits 0-9. Decimal places are allowed.');
 		return;
@@ -157,16 +160,21 @@ function editChallenge () {
 		}
 	}
 	let progress;
-	if (parseFloat(document.getElementById('challenge-edit-progress').value) || parseFloat(document.getElementById('challenge-edit-progress').value) == 0 || document.getElementById('challenge-edit-progress').value == '') { // If the user entered a number, entered 0, or left it blank
+	if (parseFloat(document.getElementById('challenge-edit-progress').value) >= 0) { // If the user entered a number, entered 0, or left it blank
 		progress = parseFloat(document.getElementById('challenge-edit-progress').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
+	} else if (document.getElementById('challenge-edit-progress').value == '' || parseFloat(document.getElementById('challenge-edit-progress').value) < 0) {
+		progress = 0;
 	} else { // If the user entered an invalid value somehow
 		alert ('Error: invalid format for progress. Please enter a number using the digits 0-9. Decimal places are allowed.');
 		return;
 	}
 	const isComplete = document.getElementById('is-complete').checked;
 	let period;
-	if (parseFloat(document.getElementById('challenge-edit-period').value) || document.getElementById('challenge-edit-period').value == '') {
+	if (parseFloat(document.getElementById('challenge-edit-period').value) > 0 || document.getElementById('challenge-edit-period').value == '') {
 		period = parseFloat(document.getElementById('challenge-edit-period').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
+	} else if (parseFloat(document.getElementById('challenge-edit-period').value) <= 0) {
+		alert ('Error: invalid time period. Please enter a number greater than 0.');
+		period = '';
 	} else {
 		alert ('Error: invalid format for time period. Please enter a whole number without a decimal point using the digits 0-9.');
 		return;
