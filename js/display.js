@@ -129,14 +129,18 @@ function writeCard () {
 					if (challenge.progress > milestone.distance) {
 						currentStep = milestone.distance;
 						cardContent += '<tr><td class="progress-header">' + milestone.name + '</td>';
+						cardContent += '<td class="milestone-start">' + previousStep + '</td>';
 						cardContent += '<td class="progress-display"><div><div class="progress"><div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Complete!</div></div></div></td>';
+						cardContent += '<td class="milestone-end">' + milestone.distance + '</td>';
 						cardContent += '</tr>';
 						previousStep = currentStep;
 					} else { // If the milestone is not complete, calculate the progress between previous milestone and upcoming milestone for this progress bar; milestones after this will be 0%
 						currentStep = Math.max(challenge.progress - previousStep, 0);
 						let nextStep = challenge.milestones[stepCounter].distance - previousStep;
 						cardContent += '<tr><td class="progress-header">' + milestone.name + '</td>';
+						cardContent += '<td class="milestone-start">' + previousStep + '</td>';
 						cardContent += '<td class="progress-display"><div><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' + (currentStep / nextStep) * 100 + '%;" aria-valuenow="' + nextStep + '" aria-valuemin="0" aria-valuemax="100">' + parseFloat(currentStep.toFixed(2)) + " / " + nextStep + '</div></div></div></td>';
+						cardContent += '<td class="milestone-end">' + milestone.distance + '</td>';
 						cardContent += '</tr>';
 						previousStep = challenge.milestones[stepCounter].distance;
 					}
