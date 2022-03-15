@@ -102,5 +102,5 @@ function validateUpload (userData, e) {
 	}
 	window.localStorage.setItem('distanceTracker', JSON.stringify(userData)); // Load contents of file into localStorage object
 	challenges = userData;
-	console.log (challenges);
+	document.getElementById('upload-success').innerHTML = '<div class="alert alert-success">File uploaded successfully.</div>';
 }

@@ -218,7 +218,9 @@ function writeCard () {
 					const milestone = challenge.milestones[step];
 					currentStep = milestone.distance;
 					cardContent += '<tr><td class="progress-header">' + milestone.name + '</td>';
+					cardContent += '<td class="milestone-start">' + previousStep + '</td>';
 					cardContent += '<td class="progress-display"><div><div class="progress"><div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Complete!</div></div></div></td>';
+					cardContent += '<td class="milestone-end">' + milestone.distance + '</td>';
 					cardContent += '</tr>';
 					previousStep = currentStep;
 					stepCounter++;
