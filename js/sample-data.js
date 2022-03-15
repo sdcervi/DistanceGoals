@@ -97,5 +97,5 @@ const sampleData = {
 function resetData () {
 	challenges = sampleData;
 	resetPage();
-	location.reload(true);
+	window.location.href = './index.html';
 }

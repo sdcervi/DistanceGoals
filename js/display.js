@@ -50,7 +50,7 @@ function writeCard () {
 			// Generate the card header, containing the challenge name and add/edit/delete buttons
 			let cardContent = '<article class="col" id="' + counter +'"><div class="card race-card"><div class="card-header race-name">';
 			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#deleteChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/clear-icon.svg" alt="Delete" class="icon-white" /></button>'; // Delete button
-			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#editChallengeModal" data-bs-challenge="' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" /></button>'; // Edit button
+			cardContent += '<button class="btn btn-sm btn-primary progress-edit"><a href="./edit-challenge.html?challenge_id=' + counter + '"><img src="assets/edit-icon.svg" alt="Edit" class="icon-white" /></a></button>'; // Edit button
 			cardContent += '<button class="btn btn-sm btn-primary progress-edit" data-bs-toggle="modal" data-bs-target="#addProgressModal" data-bs-challenge="' + counter + '"><img src="assets/add-icon.svg" alt="Edit" class="icon-white" /></button>'; // Add progress button
 			cardContent += '<h3>' + challenge.name + '</h3></div>'; // Challenge name
 			

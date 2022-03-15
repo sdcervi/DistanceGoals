@@ -5,16 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="A simple distance goal tracker for virtual distance challenges without their own apps">
 	<meta name="author" content="Stephanie Cervi">
-	<title>Distance Goal Tracker</title>
+	<title>Add new challenge || Distance Goal Tracker</title>
 
 	<!-- CSS -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
-	
-	<style>
-		#collapseMilestones { position: relative; }
-		button.milestones-add-button { right: 0; top: -3me; }
-	</style>
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
@@ -82,11 +77,11 @@
 		</div>
 		<div class="row">
 			<div class="form-check ps-5 mb-3">
-				<input class="form-check-input" type="checkbox" name="has-milestones" id="hasMilestones" data-bs-toggle="collapse" href="#collapseMilestones" role="button" aria-expanded="false" aria-controls="collapseMilestones">
+				<input class="form-check-input" type="checkbox" name="has-milestones" id="hasMilestones" data-bs-toggle="collapse" href="#collapse-milestones" role="button" aria-expanded="false" aria-controls="collapseMilestones">
 				<label class="form-check-label" for="hasMilestones">This challenge has milestones</label>
 			</div>
 		</div>
-		<div class="collapse" id="collapseMilestones">
+		<div class="collapse" id="collapse-milestones">
 			<button class="btn btn-outline-primary btn-sm milestones-add-button" type="button" onclick="addMilestone('milestones-container')">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
 					<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
