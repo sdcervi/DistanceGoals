@@ -125,12 +125,16 @@ function addChallenge () {
 	
 	const company = document.getElementById('challenge-new-company').value;
 	let distance;
-	if (parseFloat(document.getElementById('enter-distance-new').value)) {
+	if (parseFloat(document.getElementById('enter-distance-new').value) > 0) {
 		distance = parseFloat(document.getElementById('enter-distance-new').value); // Convert to number; will discard any non-numeric values
+	} else if (parseFloat(document.getElementById('enter-distance-new').value) <= 0) {
+		alert ('Error: invalid distance. Please enter a number greater than 0.');
+		return;
 	} else if (typeof document.getElementById('enter-distance-new').value == 'string') {
 		alert ('Error: invalid format for distance. Please enter a number using the digits 0-9. Decimal places are allowed.');
 		return;
 	}
+	
 	const unitList = document.querySelectorAll('input[name="distance-new"]');
 	let distanceUnit;
 	for (const unit of unitList) { // Get the selected unit from the list of units available
@@ -140,14 +144,24 @@ function addChallenge () {
 		}
 	}
 	let period;
-	if (parseFloat(document.getElementById('challenge-new-period').value) || document.getElementById('challenge-new-period').value == '') {
+	if (parseFloat(document.getElementById('challenge-new-period').value) > 0 || document.getElementById('challenge-new-period').value == '') {
 		period = parseFloat(document.getElementById('challenge-new-period').value); // Convert to number to prevent weird math errors; will discard any non-numeric values
+	} else if (parseFloat(document.getElementById('challenge-new-period').value) <= 0) {
+		alert ('Error: invalid time period. Please enter a number greater than 0.');
+		period = '';
 	} else {
 		alert ('Error: invalid format for time period. Please enter a whole number without a decimal point using the digits 0-9.');
 		return;
 	}
+	
 	const periodUnit = document.getElementById('challenge-new-period-unit').value;
-	const start = document.getElementById('challenge-new-start').value;
+	let start;
+	if (document.getElementById('challenge-new-start').value) {
+		start = document.getElementById('challenge-new-start').value;
+	} else {
+		const today = new Date();
+		start = today.getFullYear() + '-' + today.getMonth() + '-' + today.getdate();
+	}
 	const hasMilestones = document.getElementById('hasMilestones').checked;
 	const milestones = document.getElementById('milestones-container');
 	
