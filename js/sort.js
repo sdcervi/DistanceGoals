@@ -1,7 +1,13 @@
 /* Contains the functions that sort the challenges */
 
 // Check to see if the user has a saved sort method
-let sortBy = window.localStorage.getItem('distanceTracker-sortBy');
+let sortBy;
+if (window.localStorage.getItem('distanceTracker-sortBy')) {
+	sortBy = window.localStorage.getItem('distanceTracker-sortBy');
+} else {
+	sortBy = 'progress-desc';
+	window.localStorage.setItem('distanceTracker-sortBy', sortBy);
+}
 
 // Sort modal and selecting correct radio button when opened
 const sortModal = document.getElementById('sortModal');
